@@ -127,22 +127,22 @@ export default function FacilitiesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-deep-black relative overflow-hidden">
+      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-power-red/10 rounded-full blur-[200px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-power-red/10 rounded-full blur-[150px]" />
         </div>
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
               WORLD-CLASS
               <br />
               <span className="text-gradient">FACILITIES</span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+            <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
               Experience premium fitness with 40,000 sq ft of state-of-the-art
               equipment, expert-designed spaces, and luxury amenities.
             </p>
@@ -198,11 +198,11 @@ export default function FacilitiesPage() {
       </AnimatePresence>
 
       {/* Facility Carousel */}
-      <section className="py-32 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-card border-y border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="relative">
             {/* Navigation */}
-            <div className="absolute top-1/2 -translate-y-1/2 -left-4 z-10">
+            <div className="absolute top-1/2 -translate-y-1/2 -left-4 z-10 hidden lg:block">
               <button
                 onClick={prevSlide}
                 className="w-12 h-12 rounded-full bg-deep-black border border-border flex items-center justify-center text-pure-white hover:border-power-red transition-colors"
@@ -210,7 +210,7 @@ export default function FacilitiesPage() {
                 <ChevronLeft className="w-6 h-6" />
               </button>
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 -right-4 z-10">
+            <div className="absolute top-1/2 -translate-y-1/2 -right-4 z-10 hidden lg:block">
               <button
                 onClick={nextSlide}
                 className="w-12 h-12 rounded-full bg-deep-black border border-border flex items-center justify-center text-pure-white hover:border-power-red transition-colors"
@@ -227,10 +227,10 @@ export default function FacilitiesPage() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
               >
                 {/* Image */}
-                <div className="relative h-[400px] rounded-3xl overflow-hidden">
+                <div className="relative h-[350px] rounded-2xl overflow-hidden">
                   <Image
                     src={facilities[activeIndex].image}
                     alt={facilities[activeIndex].name}
@@ -242,23 +242,23 @@ export default function FacilitiesPage() {
 
                 {/* Info */}
                 <div>
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-power-red to-electric-orange mb-6">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-power-red to-electric-orange mb-4">
                     {(() => {
                       const Icon = facilities[activeIndex].icon;
-                      return <Icon className="w-8 h-8 text-pure-white" />;
+                      return <Icon className="w-7 h-7 text-pure-white" />;
                     })()}
                   </div>
-                  <h2 className="heading-font text-4xl font-bold text-pure-white mb-4">
+                  <h2 className="heading-font text-3xl font-bold text-pure-white mb-3">
                     {facilities[activeIndex].name}
                   </h2>
-                  <p className="text-gray-400 text-lg mb-8">
+                  <p className="text-gray-400 mb-6">
                     {facilities[activeIndex].description}
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {facilities[activeIndex].features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-center space-x-3 text-gray-300"
+                        className="flex items-center space-x-3 text-gray-300 text-sm"
                       >
                         <div className="w-2 h-2 rounded-full bg-power-red" />
                         <span>{feature}</span>
@@ -270,7 +270,7 @@ export default function FacilitiesPage() {
             </AnimatePresence>
 
             {/* Dots */}
-            <div className="flex justify-center space-x-2 mt-12">
+            <div className="flex justify-center space-x-2 mt-8">
               {facilities.map((_, index) => (
                 <button
                   key={index}
@@ -289,14 +289,14 @@ export default function FacilitiesPage() {
       </section>
 
       {/* Facilities Grid */}
-      <section className="py-32 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-deep-black">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="EXPLORE OUR SPACES"
             subtitle="Every corner designed for your success"
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facilities.map((facility, index) => (
               <motion.div
                 key={facility.id}
@@ -304,15 +304,15 @@ export default function FacilitiesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-3xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover"
+                className="group p-6 rounded-2xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <facility.icon className="w-7 h-7 text-pure-white" />
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <facility.icon className="w-6 h-6 text-pure-white" />
                 </div>
-                <h3 className="heading-font text-2xl font-bold text-pure-white mb-3 group-hover:text-power-red transition-colors">
+                <h3 className="heading-font text-xl font-bold text-pure-white mb-2 group-hover:text-power-red transition-colors">
                   {facility.name}
                 </h3>
-                <p className="text-gray-400 mb-6 line-clamp-3">
+                <p className="text-gray-400 text-sm mb-4 line-clamp-3">
                   {facility.description}
                 </p>
                 <button
@@ -333,9 +333,9 @@ export default function FacilitiesPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-28 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="py-16 bg-card border-y border-border">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { value: "40,000", label: "Sq Ft of Space" },
               { value: "200+", label: "Equipment Pieces" },
@@ -349,10 +349,10 @@ export default function FacilitiesPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="heading-font text-5xl font-bold text-gradient mb-2">
+                <div className="heading-font text-3xl md:text-4xl font-bold text-gradient mb-1">
                   {stat.value}
                 </div>
-                <div className="text-gray-400">{stat.label}</div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -360,12 +360,12 @@ export default function FacilitiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-gradient-to-r from-power-red to-electric-orange">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-6">
+      <section className="py-16 bg-gradient-to-r from-power-red to-electric-orange">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="heading-font text-3xl md:text-4xl font-bold text-pure-white mb-4">
             SEE IT FOR YOURSELF
           </h2>
-          <p className="text-xl text-white/90 max-w-xl mx-auto mb-10">
+          <p className="text-lg text-white/90 max-w-xl mx-auto mb-8">
             Schedule a tour and experience our world-class facilities in person.
           </p>
           <Link href="/trial">

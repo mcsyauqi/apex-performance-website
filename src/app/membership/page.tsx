@@ -35,22 +35,22 @@ export default function MembershipPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-deep-black relative overflow-hidden">
+      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-power-red/10 rounded-full blur-[150px]" />
         </div>
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
               CHOOSE YOUR
               <br />
               <span className="text-gradient">PATH TO GREATNESS</span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-xl mx-auto">
               Flexible membership options designed to fit your lifestyle and
               fitness goals. Start your transformation today.
             </p>
@@ -59,8 +59,8 @@ export default function MembershipPage() {
       </section>
 
       {/* Billing Toggle */}
-      <section className="py-8 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-6 bg-card border-y border-border">
+        <div className="max-w-5xl mx-auto px-6">
           <div className="flex items-center justify-center space-x-4">
             <span
               className={cn(
@@ -102,9 +102,9 @@ export default function MembershipPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-32 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <section className="py-16 bg-deep-black">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {membershipPlans.map((plan, index) => {
               const price =
                 billingPeriod === "yearly"
@@ -118,7 +118,7 @@ export default function MembershipPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className={cn(
-                    "relative rounded-3xl overflow-hidden",
+                    "relative rounded-2xl overflow-hidden",
                     plan.highlighted
                       ? "border-2 border-power-red"
                       : "border border-border"
@@ -132,37 +132,37 @@ export default function MembershipPage() {
 
                   <div
                     className={cn(
-                      "p-8 bg-card",
-                      plan.highlighted && "pt-14"
+                      "p-6 bg-card",
+                      plan.highlighted && "pt-12"
                     )}
                   >
                     {/* Plan Icon */}
                     <div
                       className={cn(
-                        "w-14 h-14 rounded-xl flex items-center justify-center mb-6",
+                        "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
                         plan.highlighted
                           ? "bg-gradient-to-br from-power-red to-electric-orange"
                           : "bg-steel-gray"
                       )}
                     >
                       {plan.id === "elite" ? (
-                        <Crown className="w-7 h-7 text-pure-white" />
+                        <Crown className="w-6 h-6 text-pure-white" />
                       ) : plan.id === "pro" ? (
-                        <Zap className="w-7 h-7 text-pure-white" />
+                        <Zap className="w-6 h-6 text-pure-white" />
                       ) : (
-                        <Dumbbell className="w-7 h-7 text-pure-white" />
+                        <Dumbbell className="w-6 h-6 text-pure-white" />
                       )}
                     </div>
 
-                    <h3 className="heading-font text-2xl font-bold text-pure-white mb-2">
+                    <h3 className="heading-font text-xl font-bold text-pure-white mb-2">
                       {plan.name}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-6">
+                    <p className="text-gray-400 text-sm mb-4">
                       {plan.description}
                     </p>
 
-                    <div className="mb-8">
-                      <span className="heading-font text-5xl font-bold text-pure-white">
+                    <div className="mb-6">
+                      <span className="heading-font text-4xl font-bold text-pure-white">
                         {formatCurrency(price)}
                       </span>
                       <span className="text-gray-500 ml-2">
@@ -174,14 +174,14 @@ export default function MembershipPage() {
                       <Button
                         fullWidth
                         variant={plan.highlighted ? "primary" : "outline"}
-                        className="mb-8"
+                        className="mb-6"
                       >
                         Get Started
                         <ArrowRight className="ml-2 w-5 h-5" />
                       </Button>
                     </Link>
 
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {plan.features.map((feature) => (
                         <div
                           key={feature}
@@ -205,25 +205,25 @@ export default function MembershipPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-32 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-card border-y border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="COMPARE PLANS"
             subtitle="Find the perfect membership for your fitness journey"
           />
 
-          <div className="mt-16 overflow-x-auto">
-            <table className="w-full min-w-[800px]">
+          <div className="mt-10 overflow-x-auto">
+            <table className="w-full min-w-[700px]">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-4 px-4 text-gray-400 font-normal">
+                  <th className="text-left py-3 px-3 text-gray-400 font-normal text-sm">
                     Features
                   </th>
                   {membershipPlans.map((plan) => (
                     <th
                       key={plan.id}
                       className={cn(
-                        "text-center py-4 px-4",
+                        "text-center py-3 px-3 text-sm",
                         plan.highlighted
                           ? "text-power-red font-bold"
                           : "text-pure-white font-medium"
@@ -299,11 +299,11 @@ export default function MembershipPage() {
                       index % 2 === 0 ? "bg-deep-black/50" : ""
                     )}
                   >
-                    <td className="py-4 px-4 text-gray-300">{row.feature}</td>
+                    <td className="py-3 px-3 text-gray-300 text-sm">{row.feature}</td>
                     {["basic", "pro", "elite"].map((planType) => {
                       const value = row[planType as keyof typeof row];
                       return (
-                        <td key={planType} className="text-center py-4 px-4">
+                        <td key={planType} className="text-center py-3 px-3">
                           {typeof value === "boolean" ? (
                             value ? (
                               <Check className="w-5 h-5 text-success-green mx-auto" />
@@ -311,7 +311,7 @@ export default function MembershipPage() {
                               <X className="w-5 h-5 text-gray-600 mx-auto" />
                             )
                           ) : (
-                            <span className="text-gray-300">{value}</span>
+                            <span className="text-gray-300 text-sm">{value}</span>
                           )}
                         </td>
                       );
@@ -325,14 +325,14 @@ export default function MembershipPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-32 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-deep-black">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="MEMBERSHIP BENEFITS"
             subtitle="Every membership includes access to our world-class facilities"
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {membershipBenefits.map((benefit, index) => {
               const Icon = iconMap[benefit.icon] || Dumbbell;
               return (
@@ -342,15 +342,15 @@ export default function MembershipPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="text-center p-8 rounded-2xl bg-card border border-border"
+                  className="text-center p-6 rounded-2xl bg-card border border-border"
                 >
-                  <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-6">
-                    <Icon className="w-8 h-8 text-pure-white" />
+                  <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-4">
+                    <Icon className="w-7 h-7 text-pure-white" />
                   </div>
-                  <h3 className="heading-font text-xl font-bold text-pure-white mb-3">
+                  <h3 className="heading-font text-lg font-bold text-pure-white mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-400">{benefit.description}</p>
+                  <p className="text-gray-400 text-sm">{benefit.description}</p>
                 </motion.div>
               );
             })}
@@ -359,14 +359,14 @@ export default function MembershipPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-32 bg-card border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-card border-t border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="FREQUENTLY ASKED QUESTIONS"
             subtitle="Everything you need to know about our memberships"
           />
 
-          <div className="mt-16 max-w-3xl mx-auto space-y-4">
+          <div className="mt-10 max-w-3xl mx-auto space-y-4">
             {[
               {
                 question: "Can I switch my membership plan later?",
@@ -400,12 +400,12 @@ export default function MembershipPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-deep-black border border-border"
+                className="p-5 rounded-2xl bg-deep-black border border-border"
               >
                 <h3 className="font-semibold text-pure-white mb-2">
                   {faq.question}
                 </h3>
-                <p className="text-gray-400">{faq.answer}</p>
+                <p className="text-gray-400 text-sm">{faq.answer}</p>
               </motion.div>
             ))}
           </div>
@@ -413,12 +413,12 @@ export default function MembershipPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-gradient-to-r from-power-red to-electric-orange">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-6">
+      <section className="py-16 bg-gradient-to-r from-power-red to-electric-orange">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="heading-font text-3xl md:text-4xl font-bold text-pure-white mb-4">
             READY TO START?
           </h2>
-          <p className="text-xl text-white/90 max-w-xl mx-auto mb-10">
+          <p className="text-lg text-white/90 max-w-xl mx-auto mb-8">
             Try APEX Performance free for 7 days. No commitment required.
           </p>
           <Link href="/trial">

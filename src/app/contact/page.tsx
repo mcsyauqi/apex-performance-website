@@ -72,22 +72,22 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-deep-black relative overflow-hidden">
+      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-power-red/10 rounded-full blur-[150px]" />
         </div>
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
               GET IN
               <br />
               <span className="text-gradient">TOUCH</span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-xl mx-auto">
               Have questions? We&apos;re here to help. Reach out to our team
               and we&apos;ll get back to you within 24 hours.
             </p>
@@ -96,25 +96,25 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-12 bg-card border-y border-border">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-deep-black border border-border"
+                className="p-5 rounded-xl bg-deep-black border border-border"
               >
-                <div className="w-12 h-12 rounded-xl bg-power-red/10 flex items-center justify-center mb-4">
-                  <info.icon className="w-6 h-6 text-power-red" />
+                <div className="w-10 h-10 rounded-lg bg-power-red/10 flex items-center justify-center mb-3">
+                  <info.icon className="w-5 h-5 text-power-red" />
                 </div>
-                <h3 className="font-semibold text-pure-white mb-2">
+                <h3 className="font-semibold text-pure-white mb-2 text-sm">
                   {info.title}
                 </h3>
                 {info.details.map((detail, i) => (
-                  <p key={i} className="text-gray-400 text-sm">
+                  <p key={i} className="text-gray-400 text-xs">
                     {detail}
                   </p>
                 ))}
@@ -125,28 +125,28 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-32 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-16 bg-deep-black">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-2xl font-bold text-pure-white mb-6">
                 Send Us a Message
               </h2>
 
               {isSubmitted ? (
-                <div className="p-8 rounded-2xl bg-card border border-border text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-success-green/20 flex items-center justify-center">
-                    <Send className="w-8 h-8 text-success-green" />
+                <div className="p-6 rounded-xl bg-card border border-border text-center">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-success-green/20 flex items-center justify-center">
+                    <Send className="w-7 h-7 text-success-green" />
                   </div>
-                  <h3 className="text-xl font-semibold text-pure-white mb-2">
+                  <h3 className="text-lg font-semibold text-pure-white mb-2">
                     Message Sent!
                   </h3>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-gray-400 text-sm mb-6">
                     Thank you for reaching out. We&apos;ll get back to you
                     within 24 hours.
                   </p>
@@ -155,8 +155,8 @@ export default function ContactPage() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm text-gray-400 mb-2">
                         Your Name *
@@ -195,7 +195,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm text-gray-400 mb-2">
                         Phone Number
@@ -245,7 +245,7 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       required
-                      rows={5}
+                      rows={4}
                       value={formData.message}
                       onChange={(e) =>
                         setFormData((prev) => ({
@@ -272,16 +272,16 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-2xl font-bold text-pure-white mb-6">
                 Find Us
               </h2>
 
-              <div className="relative h-[400px] rounded-2xl overflow-hidden bg-card border border-border mb-8">
+              <div className="relative h-[300px] rounded-xl overflow-hidden bg-card border border-border mb-6">
                 <div className="absolute inset-0 bg-gradient-to-br from-power-red/10 to-electric-orange/10 flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-12 h-12 mx-auto mb-4 text-power-red" />
-                    <p className="text-gray-400">Interactive Map</p>
-                    <p className="text-sm text-gray-500">
+                    <MapPin className="w-10 h-10 mx-auto mb-3 text-power-red" />
+                    <p className="text-gray-400 text-sm">Interactive Map</p>
+                    <p className="text-xs text-gray-500">
                       (Map would be embedded here)
                     </p>
                   </div>
@@ -290,17 +290,17 @@ export default function ContactPage() {
 
               {/* Social Links */}
               <div>
-                <h3 className="text-lg font-semibold text-pure-white mb-4">
+                <h3 className="text-base font-semibold text-pure-white mb-3">
                   Follow Us
                 </h3>
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-3">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href="#"
-                      className="flex items-center space-x-2 p-3 rounded-xl bg-card border border-border hover:border-power-red transition-colors"
+                      className="flex items-center space-x-2 p-3 rounded-lg bg-card border border-border hover:border-power-red transition-colors"
                     >
-                      <social.icon className="w-5 h-5 text-power-red" />
+                      <social.icon className="w-4 h-4 text-power-red" />
                       <span className="text-sm text-gray-400 hidden md:inline">
                         {social.handle}
                       </span>
@@ -314,14 +314,14 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-32 bg-card border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-card border-t border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="QUICK ANSWERS"
             subtitle="Common questions answered"
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {[
               {
                 q: "What are your operating hours?",
@@ -346,10 +346,10 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-deep-black border border-border"
+                className="p-5 rounded-xl bg-deep-black border border-border"
               >
-                <h3 className="font-semibold text-pure-white mb-2">{faq.q}</h3>
-                <p className="text-gray-400 text-sm">{faq.a}</p>
+                <h3 className="font-semibold text-pure-white mb-2 text-sm">{faq.q}</h3>
+                <p className="text-gray-400 text-xs">{faq.a}</p>
               </motion.div>
             ))}
           </div>

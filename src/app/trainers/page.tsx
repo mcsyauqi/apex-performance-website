@@ -38,7 +38,7 @@ export default function TrainersPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-deep-black relative overflow-hidden">
+      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-power-red/10 rounded-full blur-[150px]" />
         </div>
@@ -65,7 +65,7 @@ export default function TrainersPage() {
       <section className="py-6 bg-card border-y border-border sticky top-20 z-40">
         <div className="max-w-5xl mx-auto px-6">
           {/* Search */}
-          <div className="relative max-w-xl mx-auto mb-6">
+          <div className="relative max-w-xl mx-auto mb-4">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
             <input
               type="text"
@@ -77,13 +77,13 @@ export default function TrainersPage() {
           </div>
 
           {/* Specialty Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             {specialties.map((specialty) => (
               <button
                 key={specialty}
                 onClick={() => setSelectedSpecialty(specialty)}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all",
+                  "px-3 py-1.5 rounded-full text-sm font-medium transition-all",
                   selectedSpecialty === specialty
                     ? "bg-gradient-to-r from-power-red to-electric-orange text-pure-white"
                     : "bg-deep-black text-gray-400 hover:text-pure-white border border-border hover:border-power-red/50"
@@ -98,9 +98,9 @@ export default function TrainersPage() {
 
       {/* Trainers Grid */}
       <section className="py-16 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mb-8">
-            <p className="text-gray-400">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-6">
+            <p className="text-gray-400 text-sm">
               Showing{" "}
               <span className="text-pure-white font-medium">
                 {filteredTrainers.length}
@@ -109,7 +109,7 @@ export default function TrainersPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredTrainers.map((trainer, index) => (
               <TrainerCard key={trainer.id} trainer={trainer} index={index} />
             ))}
@@ -118,14 +118,14 @@ export default function TrainersPage() {
       </section>
 
       {/* Why Our Trainers */}
-      <section className="py-32 bg-card border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-card border-t border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="WHY TRAIN WITH US"
             subtitle="Our trainers are more than just coaches – they're your partners in success"
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 title: "Certified Experts",
@@ -155,18 +155,18 @@ export default function TrainersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center p-8 rounded-3xl bg-deep-black border border-border"
+                className="text-center p-6 rounded-2xl bg-deep-black border border-border"
               >
-                <div className="heading-font text-5xl font-bold text-gradient mb-2">
+                <div className="heading-font text-4xl font-bold text-gradient mb-1">
                   {item.stat}
                 </div>
-                <div className="text-sm text-gray-500 mb-6">
+                <div className="text-xs text-gray-500 mb-4">
                   {item.statLabel}
                 </div>
-                <h3 className="heading-font text-xl font-bold text-pure-white mb-3">
+                <h3 className="heading-font text-lg font-bold text-pure-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-400">{item.description}</p>
+                <p className="text-gray-400 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>

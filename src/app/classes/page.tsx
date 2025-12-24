@@ -41,7 +41,7 @@ export default function ClassesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-28 pb-16 bg-deep-black relative overflow-hidden">
+      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-power-red/10 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-electric-orange/10 rounded-full blur-[150px]" />
@@ -69,7 +69,7 @@ export default function ClassesPage() {
       <section className="py-6 bg-card border-y border-border sticky top-20 z-40">
         <div className="max-w-5xl mx-auto px-6">
           {/* Search Bar */}
-          <div className="relative max-w-xl mx-auto mb-6">
+          <div className="relative max-w-xl mx-auto mb-4">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
             <input
               type="text"
@@ -81,13 +81,13 @@ export default function ClassesPage() {
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
             {categories.map((category) => (
               <button
                 key={category.value}
                 onClick={() => setSelectedCategory(category.value)}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all",
+                  "px-3 py-1.5 rounded-full text-sm font-medium transition-all",
                   selectedCategory === category.value
                     ? "bg-gradient-to-r from-power-red to-electric-orange text-pure-white"
                     : "bg-deep-black text-gray-400 hover:text-pure-white border border-border hover:border-power-red/50"
@@ -122,15 +122,15 @@ export default function ClassesPage() {
       <section className="py-16 bg-deep-black">
         <div className="max-w-6xl mx-auto px-6">
           {/* Results Count */}
-          <div className="mb-8 flex items-center justify-between">
-            <p className="text-gray-400">
+          <div className="mb-6 flex items-center justify-between">
+            <p className="text-gray-400 text-sm">
               Showing{" "}
               <span className="text-pure-white font-medium">
                 {filteredClasses.length}
               </span>{" "}
               classes
             </p>
-            <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <div className="flex items-center space-x-4 text-xs text-gray-500">
               <div className="flex items-center space-x-1">
                 <Clock className="w-4 h-4" />
                 <span>Duration</span>
@@ -149,7 +149,7 @@ export default function ClassesPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {filteredClasses.map((classItem, index) => (
                   <ClassCard
@@ -165,13 +165,13 @@ export default function ClassesPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="text-center py-20"
+                className="text-center py-16"
               >
-                <Filter className="w-16 h-16 mx-auto mb-4 text-gray-600" />
-                <h3 className="text-xl font-semibold text-pure-white mb-2">
+                <Filter className="w-14 h-14 mx-auto mb-4 text-gray-600" />
+                <h3 className="text-lg font-semibold text-pure-white mb-2">
                   No classes found
                 </h3>
-                <p className="text-gray-400">
+                <p className="text-gray-400 text-sm">
                   Try adjusting your filters or search terms
                 </p>
               </motion.div>
@@ -188,15 +188,15 @@ export default function ClassesPage() {
             subtitle="Plan your week with our comprehensive class schedule"
           />
 
-          <div className="mt-12 overflow-x-auto">
-            <div className="min-w-[800px]">
+          <div className="mt-10 overflow-x-auto">
+            <div className="min-w-[700px]">
               <div className="grid grid-cols-8 gap-2">
                 {/* Header */}
-                <div className="p-4 font-medium text-gray-500">Time</div>
+                <div className="p-3 font-medium text-gray-500 text-sm">Time</div>
                 {days.slice(1).map((day) => (
                   <div
                     key={day}
-                    className="p-4 font-medium text-pure-white text-center"
+                    className="p-3 font-medium text-pure-white text-center text-sm"
                   >
                     {day.slice(0, 3)}
                   </div>
@@ -205,7 +205,7 @@ export default function ClassesPage() {
                 {/* Time Slots */}
                 {["06:00", "08:00", "10:00", "17:30", "18:00"].map((time) => (
                   <>
-                    <div key={`${time}-label`} className="p-4 text-gray-400">
+                    <div key={`${time}-label`} className="p-3 text-gray-400 text-sm">
                       {time}
                     </div>
                     {days.slice(1).map((day) => {
@@ -225,7 +225,7 @@ export default function ClassesPage() {
                           )}
                         >
                           {classForSlot && (
-                            <div className="text-pure-white font-medium">
+                            <div className="text-pure-white font-medium text-xs">
                               {classForSlot.name}
                             </div>
                           )}
