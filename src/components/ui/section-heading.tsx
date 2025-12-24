@@ -24,7 +24,7 @@ export function SectionHeading({
       transition={{ duration: 0.6 }}
       className={cn(centered && "text-center", className)}
     >
-      <h2 className="font-[family-name:var(--font-oswald)] text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
+      <h2 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4 uppercase">
         {title}
       </h2>
       {subtitle && (

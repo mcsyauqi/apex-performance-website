@@ -56,8 +56,14 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
+}
+
+/* Heading font class */
+.heading-font {
+  font-family: 'Oswald', sans-serif !important;
+  font-style: normal !important;
 }
 
 /* Custom scrollbar */
@@ -197,9 +203,10 @@ body {
 
 /* Font utilities */
 .font-oswald {
-  font-family: var(--font-oswald);
+  font-family: 'Oswald', sans-serif !important;
+  font-style: normal !important;
 }
 
 .font-inter {
-  font-family: var(--font-inter);
+  font-family: 'Inter', system-ui, sans-serif !important;
 }

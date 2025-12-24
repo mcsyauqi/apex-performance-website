@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -33,6 +34,7 @@ const facilities = [
       "Plate-Loaded Equipment",
     ],
     icon: Dumbbell,
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800",
   },
   {
     id: "cardio",
@@ -47,6 +49,7 @@ const facilities = [
       "StairMasters & Ellipticals",
     ],
     icon: Bike,
+    image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800",
   },
   {
     id: "studios",
@@ -60,6 +63,7 @@ const facilities = [
       "Combat Studio - Boxing & MMA",
     ],
     icon: Users,
+    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800",
   },
   {
     id: "recovery",
@@ -74,6 +78,7 @@ const facilities = [
       "Compression Therapy",
     ],
     icon: Waves,
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800",
   },
   {
     id: "wellness",
@@ -88,6 +93,7 @@ const facilities = [
       "Supplement Bar",
     ],
     icon: Heart,
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800",
   },
   {
     id: "amenities",
@@ -102,6 +108,7 @@ const facilities = [
       "VIP Parking",
     ],
     icon: Sparkles,
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbec6e?q=80&w=800",
   },
 ];
 
@@ -130,7 +137,7 @@ export default function FacilitiesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               WORLD-CLASS
               <br />
               <span className="text-gradient">FACILITIES</span>
@@ -223,13 +230,14 @@ export default function FacilitiesPage() {
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
                 {/* Image */}
-                <div className="relative h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-power-red/20 to-electric-orange/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {(() => {
-                      const Icon = facilities[activeIndex].icon;
-                      return <Icon className="w-24 h-24 text-pure-white/20" />;
-                    })()}
-                  </div>
+                <div className="relative h-[400px] rounded-3xl overflow-hidden">
+                  <Image
+                    src={facilities[activeIndex].image}
+                    alt={facilities[activeIndex].name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-transparent" />
                 </div>
 
                 {/* Info */}
@@ -240,7 +248,7 @@ export default function FacilitiesPage() {
                       return <Icon className="w-8 h-8 text-pure-white" />;
                     })()}
                   </div>
-                  <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold text-pure-white mb-4">
+                  <h2 className="heading-font text-4xl font-bold text-pure-white mb-4">
                     {facilities[activeIndex].name}
                   </h2>
                   <p className="text-gray-400 text-lg mb-8">
@@ -301,7 +309,7 @@ export default function FacilitiesPage() {
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <facility.icon className="w-7 h-7 text-pure-white" />
                 </div>
-                <h3 className="font-[family-name:var(--font-oswald)] text-2xl font-bold text-pure-white mb-3 group-hover:text-power-red transition-colors">
+                <h3 className="heading-font text-2xl font-bold text-pure-white mb-3 group-hover:text-power-red transition-colors">
                   {facility.name}
                 </h3>
                 <p className="text-gray-400 mb-6 line-clamp-3">
@@ -341,7 +349,7 @@ export default function FacilitiesPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-gradient mb-2">
+                <div className="heading-font text-5xl font-bold text-gradient mb-2">
                   {stat.value}
                 </div>
                 <div className="text-gray-400">{stat.label}</div>
@@ -354,7 +362,7 @@ export default function FacilitiesPage() {
       {/* CTA */}
       <section className="py-24 bg-gradient-to-r from-power-red to-electric-orange">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl md:text-5xl font-bold text-pure-white mb-6">
+          <h2 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-6">
             SEE IT FOR YOURSELF
           </h2>
           <p className="text-xl text-white/90 max-w-xl mx-auto mb-10">

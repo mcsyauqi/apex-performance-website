@@ -52,7 +52,7 @@ export default function ClassesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               FIND YOUR
               <br />
               <span className="text-gradient">PERFECT CLASS</span>

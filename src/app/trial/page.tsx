@@ -97,7 +97,7 @@ export default function TrialPage() {
           <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-success-green/20 flex items-center justify-center">
             <Check className="w-10 h-10 text-success-green" />
           </div>
-          <h1 className="font-[family-name:var(--font-oswald)] text-4xl md:text-5xl font-bold text-pure-white mb-4">
+          <h1 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-4">
             YOU&apos;RE ALL SET!
           </h1>
           <p className="text-xl text-gray-400 mb-8">
@@ -154,7 +154,7 @@ export default function TrialPage() {
               <Sparkles className="w-4 h-4" />
               <span>7-Day Free Trial • No Credit Card Required</span>
             </div>
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               CLAIM YOUR
               <br />
               <span className="text-gradient">FREE TRIAL</span>
@@ -234,7 +234,7 @@ export default function TrialPage() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6"
                 >
-                  <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white text-center mb-8">
+                  <h2 className="heading-font text-3xl font-bold text-pure-white text-center mb-8">
                     Tell Us About Yourself
                   </h2>
 
@@ -338,7 +338,7 @@ export default function TrialPage() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6"
                 >
-                  <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white text-center mb-8">
+                  <h2 className="heading-font text-3xl font-bold text-pure-white text-center mb-8">
                     What Are Your Goals?
                   </h2>
 
@@ -415,7 +415,7 @@ export default function TrialPage() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6"
                 >
-                  <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white text-center mb-8">
+                  <h2 className="heading-font text-3xl font-bold text-pure-white text-center mb-8">
                     Schedule Your Visit
                   </h2>
 

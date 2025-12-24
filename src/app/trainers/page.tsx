@@ -48,7 +48,7 @@ export default function TrainersPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               MEET YOUR
               <br />
               <span className="text-gradient">COACHES</span>
@@ -157,13 +157,13 @@ export default function TrainersPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center p-8 rounded-3xl bg-deep-black border border-border"
               >
-                <div className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-gradient mb-2">
+                <div className="heading-font text-5xl font-bold text-gradient mb-2">
                   {item.stat}
                 </div>
                 <div className="text-sm text-gray-500 mb-6">
                   {item.statLabel}
                 </div>
-                <h3 className="font-[family-name:var(--font-oswald)] text-xl font-bold text-pure-white mb-3">
+                <h3 className="heading-font text-xl font-bold text-pure-white mb-3">
                   {item.title}
                 </h3>
                 <p className="text-gray-400">{item.description}</p>

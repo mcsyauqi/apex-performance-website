@@ -70,7 +70,7 @@ export default function ClassDetailPage() {
                 </span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-6xl font-bold text-pure-white mb-6">
+              <h1 className="heading-font text-5xl md:text-6xl font-bold text-pure-white mb-6">
                 {classData.name}
               </h1>
 
@@ -162,7 +162,7 @@ export default function ClassDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Schedule */}
             <div>
-              <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
                 Class Schedule
               </h2>
               <div className="space-y-3">
@@ -195,7 +195,7 @@ export default function ClassDetailPage() {
 
             {/* Benefits */}
             <div>
-              <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
                 Benefits
               </h2>
               <div className="space-y-4">
@@ -224,14 +224,14 @@ export default function ClassDetailPage() {
       {trainer && (
         <section className="py-16 bg-deep-black">
           <div className="container mx-auto px-4 lg:px-8">
-            <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-8">
+            <h2 className="heading-font text-3xl font-bold text-pure-white mb-8">
               Your Instructor
             </h2>
 
             <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8 p-8 rounded-3xl bg-card border border-border">
               <div className="w-32 h-32 rounded-full bg-gradient-to-br from-power-red to-electric-orange flex-shrink-0" />
               <div className="text-center md:text-left">
-                <h3 className="font-[family-name:var(--font-oswald)] text-2xl font-bold text-pure-white mb-1">
+                <h3 className="heading-font text-2xl font-bold text-pure-white mb-1">
                   {trainer.name}
                 </h3>
                 <p className="text-power-red font-medium mb-3">
@@ -264,7 +264,7 @@ export default function ClassDetailPage() {
       {/* Requirements */}
       <section className="py-16 bg-card border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+          <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
             What to Bring
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -283,7 +283,7 @@ export default function ClassDetailPage() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-power-red to-electric-orange">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold text-pure-white mb-4">
+          <h2 className="heading-font text-4xl font-bold text-pure-white mb-4">
             READY TO JOIN?
           </h2>
           <p className="text-xl text-white/90 mb-8">

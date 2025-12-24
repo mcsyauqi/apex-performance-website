@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -46,9 +46,9 @@ export function Navigation() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
             >
-              <span className="font-[family-name:var(--font-oswald)] text-3xl font-bold tracking-tight">
-                <span className="text-gradient">APEX</span>
-                <span className="text-pure-white ml-1">PERFORMANCE</span>
+              <span className="heading-font text-3xl font-bold tracking-tight uppercase">
+                <span className="text-gradient">Apex</span>
+                <span className="text-pure-white ml-1">Performance</span>
               </span>
             </motion.div>
           </Link>

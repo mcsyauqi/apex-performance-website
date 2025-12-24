@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -17,6 +18,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { trainers } from "@/data/trainers";
 import { classes } from "@/data/classes";
+
+const trainerImages: Record<string, string> = {
+  "marcus-chen": "https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=600",
+  "sarah-johnson": "https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=600",
+  "emma-williams": "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600",
+  "jake-martinez": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600",
+  "mike-thompson": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=600",
+  "lisa-anderson": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600",
+};
 
 export default function TrainerDetailPage() {
   const params = useParams();
@@ -65,7 +75,14 @@ export default function TrainerDetailPage() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-1"
             >
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gradient-to-br from-power-red/30 to-electric-orange/30">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden">
+                <Image
+                  src={trainerImages[trainer.slug] || trainerImages["marcus-chen"]}
+                  alt={trainer.name}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent" />
                 {/* Social Links Overlay */}
                 <div className="absolute bottom-6 left-6 right-6 flex justify-center space-x-4">
                   {trainer.socialMedia.instagram && (
@@ -103,7 +120,7 @@ export default function TrainerDetailPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-2"
             >
-              <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-6xl font-bold text-pure-white mb-2">
+              <h1 className="heading-font text-5xl md:text-6xl font-bold text-pure-white mb-2">
                 {trainer.name}
               </h1>
               <p className="text-xl text-power-red font-medium mb-6">
@@ -165,7 +182,7 @@ export default function TrainerDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Certifications */}
             <div>
-              <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
                 Certifications
               </h2>
               <div className="space-y-3">
@@ -187,7 +204,7 @@ export default function TrainerDetailPage() {
 
             {/* Schedule */}
             <div>
-              <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
                 Availability
               </h2>
               <div className="space-y-3">
@@ -222,7 +239,7 @@ export default function TrainerDetailPage() {
       {trainerClasses.length > 0 && (
         <section className="py-16 bg-deep-black">
           <div className="container mx-auto px-4 lg:px-8">
-            <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-8">
+            <h2 className="heading-font text-3xl font-bold text-pure-white mb-8">
               Classes by {trainer.name.split(" ")[0]}
             </h2>
 
@@ -238,7 +255,7 @@ export default function TrainerDetailPage() {
                       <span className="text-sm text-power-red font-medium">
                         {classItem.category}
                       </span>
-                      <h3 className="font-[family-name:var(--font-oswald)] text-xl font-bold text-pure-white mt-1 group-hover:text-power-red transition-colors">
+                      <h3 className="heading-font text-xl font-bold text-pure-white mt-1 group-hover:text-power-red transition-colors">
                         {classItem.name}
                       </h3>
                       <p className="text-gray-400 text-sm mt-2">
@@ -257,7 +274,7 @@ export default function TrainerDetailPage() {
       {/* Testimonials */}
       <section className="py-16 bg-card border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-8">
+          <h2 className="heading-font text-3xl font-bold text-pure-white mb-8">
             What Clients Say
           </h2>
 
@@ -294,7 +311,7 @@ export default function TrainerDetailPage() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-power-red to-electric-orange">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold text-pure-white mb-4">
+          <h2 className="heading-font text-4xl font-bold text-pure-white mb-4">
             TRAIN WITH {trainer.name.split(" ")[0].toUpperCase()}
           </h2>
           <p className="text-xl text-white/90 mb-8">

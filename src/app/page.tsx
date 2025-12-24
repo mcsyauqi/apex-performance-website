@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -67,13 +68,11 @@ export default function HomePage() {
   const [count3, setCount3] = useState(0);
 
   useEffect(() => {
-    // Animate stats on scroll
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: "#stats-section",
         start: "top 80%",
         onEnter: () => {
-          // Animate counters
           gsap.to({}, {
             duration: 2,
             onUpdate: function() {
@@ -97,26 +96,19 @@ export default function HomePage() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Video Background Placeholder */}
+        {/* Background Image */}
         <motion.div
           style={{ y }}
-          className="absolute inset-0 bg-gradient-to-br from-deep-black via-gray-900 to-deep-black"
+          className="absolute inset-0"
         >
-          {/* Animated background elements */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-power-red/20 rounded-full blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-electric-orange/20 rounded-full blur-[100px] animate-pulse delay-1000" />
-          </div>
-
-          {/* Grid overlay */}
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-              backgroundSize: "50px 50px",
-            }}
+          <Image
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070"
+            alt="Gym background"
+            fill
+            className="object-cover"
+            priority
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/70 via-deep-black/60 to-deep-black" />
         </motion.div>
 
         {/* Hero Content */}
@@ -139,18 +131,18 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl lg:text-8xl font-bold text-pure-white mb-6 leading-tight"
+            className="heading-font text-5xl md:text-7xl lg:text-8xl font-bold text-pure-white mb-6 leading-tight uppercase"
           >
-            UNLEASH YOUR
+            Unleash Your
             <br />
-            <span className="text-gradient">POTENTIAL</span>
+            <span className="text-gradient">Potential</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10"
+            className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10"
           >
             Where Champions Are Made. Every rep counts. Every day matters.
             <br />
@@ -186,10 +178,10 @@ export default function HomePage() {
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <stat.icon className="w-8 h-8 mx-auto mb-2 text-power-red" />
-                <div className="font-[family-name:var(--font-oswald)] text-3xl md:text-4xl font-bold text-pure-white">
+                <div className="heading-font text-3xl md:text-4xl font-bold text-pure-white">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-500">{stat.label}</div>
+                <div className="text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -225,7 +217,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-power-red/10 text-power-red mb-4">
                 <Users className="w-8 h-8" />
               </div>
-              <div className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-pure-white mb-2">
+              <div className="heading-font text-5xl font-bold text-pure-white mb-2">
                 {count1.toLocaleString()}+
               </div>
               <div className="text-gray-400">Active Members</div>
@@ -240,7 +232,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-electric-orange/10 text-electric-orange mb-4">
                 <Calendar className="w-8 h-8" />
               </div>
-              <div className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-pure-white mb-2">
+              <div className="heading-font text-5xl font-bold text-pure-white mb-2">
                 {count2}+
               </div>
               <div className="text-gray-400">Classes Per Week</div>
@@ -255,7 +247,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success-green/10 text-success-green mb-4">
                 <Award className="w-8 h-8" />
               </div>
-              <div className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-pure-white mb-2">
+              <div className="heading-font text-5xl font-bold text-pure-white mb-2">
                 {count3}+
               </div>
               <div className="text-gray-400">Expert Trainers</div>
@@ -285,7 +277,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-7 h-7 text-pure-white" />
                 </div>
-                <h3 className="font-[family-name:var(--font-oswald)] text-xl font-bold text-pure-white mb-3">
+                <h3 className="heading-font text-xl font-bold text-pure-white mb-3 uppercase">
                   {feature.title}
                 </h3>
                 <p className="text-gray-400">{feature.description}</p>
@@ -323,24 +315,21 @@ export default function HomePage() {
 
       {/* CTA Banner */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-power-red to-electric-orange opacity-90" />
-        <div className="absolute inset-0 opacity-20">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-            }}
-          />
-        </div>
+        <Image
+          src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=2075"
+          alt="Gym workout"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-power-red/90 to-electric-orange/90" />
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-[family-name:var(--font-oswald)] text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-6">
-              READY TO TRANSFORM?
+            <h2 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-6 uppercase">
+              Ready To Transform?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
               Join APEX Performance today and get your first week free. No
@@ -400,18 +389,21 @@ export default function HomePage() {
                   "APEX completely changed my life. I've lost 30kg and gained a whole new perspective on fitness.",
                 name: "Michael R.",
                 role: "Member since 2023",
+                image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200",
               },
               {
                 quote:
                   "The trainers here are incredible. They pushed me beyond what I thought was possible.",
                 name: "Sarah K.",
                 role: "Member since 2022",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200",
               },
               {
                 quote:
                   "The community at APEX is what keeps me coming back. It's more than a gym – it's a family.",
                 name: "David L.",
                 role: "Member since 2021",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
               },
             ].map((testimonial, index) => (
               <motion.div
@@ -434,14 +426,23 @@ export default function HomePage() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6 italic">
+                <p className="text-gray-300 mb-6">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
-                <div>
-                  <div className="font-semibold text-pure-white">
-                    {testimonial.name}
+                <div className="flex items-center space-x-4">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="font-semibold text-pure-white">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-gray-500">{testimonial.role}</div>
                   </div>
-                  <div className="text-sm text-gray-500">{testimonial.role}</div>
                 </div>
               </motion.div>
             ))}
@@ -460,19 +461,23 @@ export default function HomePage() {
 
       {/* Final CTA */}
       <section className="py-32 bg-deep-black relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-power-red/10 rounded-full blur-[150px]" />
-        </div>
+        <Image
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070"
+          alt="Workout motivation"
+          fill
+          className="object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/80 to-deep-black/60" />
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-[family-name:var(--font-oswald)] text-4xl md:text-6xl lg:text-7xl font-bold text-pure-white mb-6">
-              YOUR JOURNEY
+            <h2 className="heading-font text-4xl md:text-6xl lg:text-7xl font-bold text-pure-white mb-6 uppercase">
+              Your Journey
               <br />
-              <span className="text-gradient">STARTS HERE</span>
+              <span className="text-gradient">Starts Here</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-xl mx-auto mb-10">
               Every rep counts. Every day matters. Start today.

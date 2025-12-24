@@ -56,9 +56,9 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <span className="font-[family-name:var(--font-oswald)] text-2xl font-bold tracking-tight">
-                <span className="text-gradient">APEX</span>
-                <span className="text-pure-white ml-1">PERFORMANCE</span>
+              <span className="heading-font text-2xl font-bold tracking-tight uppercase">
+                <span className="text-gradient">Apex</span>
+                <span className="text-pure-white ml-1">Performance</span>
               </span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-sm">
@@ -93,7 +93,7 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-[family-name:var(--font-oswald)] text-lg font-semibold text-pure-white mb-4">
+            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
               Company
             </h4>
             <ul className="space-y-3">
@@ -111,7 +111,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-[family-name:var(--font-oswald)] text-lg font-semibold text-pure-white mb-4">
+            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
               Programs
             </h4>
             <ul className="space-y-3">
@@ -129,7 +129,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-[family-name:var(--font-oswald)] text-lg font-semibold text-pure-white mb-4">
+            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
               Membership
             </h4>
             <ul className="space-y-3">
@@ -147,7 +147,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-[family-name:var(--font-oswald)] text-lg font-semibold text-pure-white mb-4">
+            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
               Support
             </h4>
             <ul className="space-y-3">

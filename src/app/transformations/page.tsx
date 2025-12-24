@@ -49,7 +49,7 @@ export default function TransformationsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               REAL PEOPLE.
               <br />
               <span className="text-gradient">REAL RESULTS.</span>
@@ -67,25 +67,25 @@ export default function TransformationsPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-power-red">
+              <div className="heading-font text-3xl font-bold text-power-red">
                 {stats.totalWeightLost}
               </div>
               <div className="text-sm text-gray-500">Total Weight Lost</div>
             </div>
             <div>
-              <div className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-electric-orange">
+              <div className="heading-font text-3xl font-bold text-electric-orange">
                 {stats.memberTransformations}
               </div>
               <div className="text-sm text-gray-500">Transformations</div>
             </div>
             <div>
-              <div className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-success-green">
+              <div className="heading-font text-3xl font-bold text-success-green">
                 {stats.averageWeightLoss}
               </div>
               <div className="text-sm text-gray-500">Average Weight Loss</div>
             </div>
             <div>
-              <div className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white">
+              <div className="heading-font text-3xl font-bold text-pure-white">
                 {stats.successRate}
               </div>
               <div className="text-sm text-gray-500">Success Rate</div>
@@ -193,7 +193,7 @@ export default function TransformationsPage() {
                     )}
                   </div>
 
-                  <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold text-pure-white mb-2">
+                  <h2 className="heading-font text-4xl font-bold text-pure-white mb-2">
                     {currentTransformation.name}
                   </h2>
                   <p className="text-gray-400 mb-6">
@@ -297,7 +297,7 @@ export default function TransformationsPage() {
                     </span>
                   </div>
                 </div>
-                <h3 className="font-[family-name:var(--font-oswald)] text-xl font-bold text-pure-white group-hover:text-power-red transition-colors">
+                <h3 className="heading-font text-xl font-bold text-pure-white group-hover:text-power-red transition-colors">
                   {transformation.name}
                 </h3>
                 <p className="text-gray-400 text-sm">
@@ -312,7 +312,7 @@ export default function TransformationsPage() {
       {/* CTA */}
       <section className="py-24 bg-gradient-to-r from-power-red to-electric-orange">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl md:text-5xl font-bold text-pure-white mb-6">
+          <h2 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-6">
             YOUR STORY STARTS TODAY
           </h2>
           <p className="text-xl text-white/90 max-w-xl mx-auto mb-10">

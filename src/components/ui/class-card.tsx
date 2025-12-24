@@ -2,9 +2,19 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Clock, Flame, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ClassType } from "@/data/classes";
+
+const classImages: Record<string, string> = {
+  "HIIT": "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?q=80&w=600",
+  "Strength": "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?q=80&w=600",
+  "Yoga": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600",
+  "Cycling": "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=600",
+  "Boxing": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=600",
+  "Pilates": "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600",
+};
 
 interface ClassCardProps {
   classData: ClassType;
@@ -13,6 +23,7 @@ interface ClassCardProps {
 
 export function ClassCard({ classData, index = 0 }: ClassCardProps) {
   const intensityBars = Array.from({ length: 5 }, (_, i) => i < classData.intensity);
+  const imageUrl = classImages[classData.category] || classImages["HIIT"];
 
   return (
     <motion.div
@@ -25,9 +36,13 @@ export function ClassCard({ classData, index = 0 }: ClassCardProps) {
         <div className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-power-red/50 transition-all duration-500 card-hover">
           {/* Image Container */}
           <div className="relative h-56 overflow-hidden">
-            {/* Placeholder gradient for image */}
-            <div className="absolute inset-0 bg-gradient-to-br from-power-red/20 to-electric-orange/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+            <Image
+              src={imageUrl}
+              alt={classData.name}
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
 
             {/* Category Badge */}
             <div className="absolute top-4 left-4">
@@ -52,7 +67,7 @@ export function ClassCard({ classData, index = 0 }: ClassCardProps) {
 
           {/* Content */}
           <div className="p-6">
-            <h3 className="font-[family-name:var(--font-oswald)] text-2xl font-bold text-pure-white mb-2 group-hover:text-power-red transition-colors">
+            <h3 className="heading-font text-2xl font-bold text-pure-white mb-2 group-hover:text-power-red transition-colors uppercase">
               {classData.name}
             </h3>
             <p className="text-gray-400 text-sm mb-4 line-clamp-2">

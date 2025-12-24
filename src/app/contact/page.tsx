@@ -82,7 +82,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               GET IN
               <br />
               <span className="text-gradient">TOUCH</span>
@@ -134,7 +134,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
                 Send Us a Message
               </h2>
 
@@ -272,7 +272,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold text-pure-white mb-6">
+              <h2 className="heading-font text-3xl font-bold text-pure-white mb-6">
                 Find Us
               </h2>
 

@@ -2,8 +2,18 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 import type { Trainer } from "@/data/trainers";
+
+const trainerImages: Record<string, string> = {
+  "marcus-chen": "https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=600",
+  "sarah-johnson": "https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=600",
+  "emma-williams": "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600",
+  "jake-martinez": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600",
+  "mike-thompson": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=600",
+  "lisa-anderson": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600",
+};
 
 interface TrainerCardProps {
   trainer: Trainer;
@@ -11,6 +21,8 @@ interface TrainerCardProps {
 }
 
 export function TrainerCard({ trainer, index = 0 }: TrainerCardProps) {
+  const imageUrl = trainerImages[trainer.slug] || trainerImages["marcus-chen"];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -22,8 +34,12 @@ export function TrainerCard({ trainer, index = 0 }: TrainerCardProps) {
         <div className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-power-red/50 transition-all duration-500 card-hover">
           {/* Image Container */}
           <div className="relative h-80 overflow-hidden">
-            {/* Placeholder gradient for image */}
-            <div className="absolute inset-0 bg-gradient-to-br from-steel-gray to-deep-black" />
+            <Image
+              src={imageUrl}
+              alt={trainer.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
 
             {/* Overlay on hover */}
             <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
@@ -59,7 +75,7 @@ export function TrainerCard({ trainer, index = 0 }: TrainerCardProps) {
 
           {/* Content */}
           <div className="p-6">
-            <h3 className="font-[family-name:var(--font-oswald)] text-2xl font-bold text-pure-white mb-1 group-hover:text-power-red transition-colors">
+            <h3 className="heading-font text-2xl font-bold text-pure-white mb-1 group-hover:text-power-red transition-colors uppercase">
               {trainer.name}
             </h3>
             <p className="text-power-red text-sm font-medium mb-3">

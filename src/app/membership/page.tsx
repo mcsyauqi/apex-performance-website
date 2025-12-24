@@ -45,7 +45,7 @@ export default function MembershipPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-[family-name:var(--font-oswald)] text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
               CHOOSE YOUR
               <br />
               <span className="text-gradient">PATH TO GREATNESS</span>
@@ -154,7 +154,7 @@ export default function MembershipPage() {
                       )}
                     </div>
 
-                    <h3 className="font-[family-name:var(--font-oswald)] text-2xl font-bold text-pure-white mb-2">
+                    <h3 className="heading-font text-2xl font-bold text-pure-white mb-2">
                       {plan.name}
                     </h3>
                     <p className="text-gray-400 text-sm mb-6">
@@ -162,7 +162,7 @@ export default function MembershipPage() {
                     </p>
 
                     <div className="mb-8">
-                      <span className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-pure-white">
+                      <span className="heading-font text-5xl font-bold text-pure-white">
                         {formatCurrency(price)}
                       </span>
                       <span className="text-gray-500 ml-2">
@@ -347,7 +347,7 @@ export default function MembershipPage() {
                   <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-6">
                     <Icon className="w-8 h-8 text-pure-white" />
                   </div>
-                  <h3 className="font-[family-name:var(--font-oswald)] text-xl font-bold text-pure-white mb-3">
+                  <h3 className="heading-font text-xl font-bold text-pure-white mb-3">
                     {benefit.title}
                   </h3>
                   <p className="text-gray-400">{benefit.description}</p>
@@ -415,7 +415,7 @@ export default function MembershipPage() {
       {/* CTA */}
       <section className="py-24 bg-gradient-to-r from-power-red to-electric-orange">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl md:text-5xl font-bold text-pure-white mb-6">
+          <h2 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-6">
             READY TO START?
           </h2>
           <p className="text-xl text-white/90 max-w-xl mx-auto mb-10">
