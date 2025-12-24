@@ -114,7 +114,7 @@ export default function HomePage() {
         {/* Hero Content */}
         <motion.div
           style={{ opacity }}
-          className="relative z-10 container mx-auto px-4 lg:px-8 text-center"
+          className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center py-20"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -131,7 +131,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="heading-font text-5xl md:text-7xl lg:text-8xl font-bold text-pure-white mb-6 leading-tight uppercase"
+            className="heading-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-pure-white mb-6 leading-tight uppercase"
           >
             Unleash Your
             <br />
@@ -142,10 +142,10 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8"
           >
             Where Champions Are Made. Every rep counts. Every day matters.
-            <br />
+            <br className="hidden sm:block" />
             Start your transformation today.
           </motion.p>
 
@@ -153,35 +153,35 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <Link href="/trial">
-              <Button size="lg" className="group">
+              <Button size="lg" className="w-full sm:w-auto">
                 Claim Your Free Trial
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link href="/classes">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 View Classes
               </Button>
             </Link>
           </motion.div>
 
-          {/* Stats Ticker */}
+          {/* Stats in Hero */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16"
+            className="grid grid-cols-3 gap-6 max-w-lg mx-auto"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <stat.icon className="w-8 h-8 mx-auto mb-2 text-power-red" />
-                <div className="heading-font text-3xl md:text-4xl font-bold text-pure-white">
+                <stat.icon className="w-6 h-6 mx-auto mb-2 text-power-red" />
+                <div className="heading-font text-xl sm:text-2xl md:text-3xl font-bold text-pure-white">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-xs text-gray-400">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -192,7 +192,7 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -205,22 +205,22 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section id="stats-section" className="py-24 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
+      <section id="stats-section" className="py-16 bg-card border-y border-border">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-power-red/10 text-power-red mb-4">
-                <Users className="w-8 h-8" />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-power-red/10 text-power-red mb-3">
+                <Users className="w-7 h-7" />
               </div>
-              <div className="heading-font text-5xl font-bold text-pure-white mb-2">
+              <div className="heading-font text-4xl font-bold text-pure-white mb-1">
                 {count1.toLocaleString()}+
               </div>
-              <div className="text-gray-400">Active Members</div>
+              <div className="text-gray-400 text-sm">Active Members</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -229,13 +229,13 @@ export default function HomePage() {
               transition={{ delay: 0.1 }}
               className="text-center"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-electric-orange/10 text-electric-orange mb-4">
-                <Calendar className="w-8 h-8" />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-electric-orange/10 text-electric-orange mb-3">
+                <Calendar className="w-7 h-7" />
               </div>
-              <div className="heading-font text-5xl font-bold text-pure-white mb-2">
+              <div className="heading-font text-4xl font-bold text-pure-white mb-1">
                 {count2}+
               </div>
-              <div className="text-gray-400">Classes Per Week</div>
+              <div className="text-gray-400 text-sm">Classes Per Week</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -244,27 +244,27 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success-green/10 text-success-green mb-4">
-                <Award className="w-8 h-8" />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-success-green/10 text-success-green mb-3">
+                <Award className="w-7 h-7" />
               </div>
-              <div className="heading-font text-5xl font-bold text-pure-white mb-2">
+              <div className="heading-font text-4xl font-bold text-pure-white mb-1">
                 {count3}+
               </div>
-              <div className="text-gray-400">Expert Trainers</div>
+              <div className="text-gray-400 text-sm">Expert Trainers</div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-32 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 sm:py-20 bg-deep-black">
+        <div className="max-w-5xl mx-auto px-6">
           <SectionHeading
             title="WHY CHOOSE APEX"
             subtitle="Experience the difference with our premium facilities and expert guidance"
           />
 
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -272,15 +272,15 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover text-center"
+                className="group p-4 sm:p-6 rounded-2xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover text-center"
               >
-                <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-7 h-7 text-pure-white" />
+                <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <feature.icon className="w-6 h-6 text-pure-white" />
                 </div>
-                <h3 className="heading-font text-lg font-bold text-pure-white mb-2 uppercase">
+                <h3 className="heading-font text-sm sm:text-base font-bold text-pure-white mb-2 uppercase">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <p className="text-gray-400 text-xs sm:text-sm">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -288,9 +288,9 @@ export default function HomePage() {
       </section>
 
       {/* Classes Section */}
-      <section className="py-32 bg-gradient-dark">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <section className="py-16 sm:py-20 bg-gradient-dark">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <SectionHeading
               title="POPULAR CLASSES"
               subtitle="Find your perfect workout from our diverse range of classes"
@@ -298,14 +298,14 @@ export default function HomePage() {
             />
             <Link
               href="/classes"
-              className="mt-6 md:mt-0 inline-flex items-center text-power-red hover:text-electric-orange transition-colors font-medium"
+              className="inline-flex items-center text-power-red hover:text-electric-orange transition-colors font-medium whitespace-nowrap"
             >
               View All Classes
               <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {classes.slice(0, 6).map((classItem, index) => (
               <ClassCard key={classItem.id} classData={classItem} index={index} />
             ))}
@@ -314,7 +314,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-16 sm:py-20 relative overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=2075"
           alt="Gym workout"
@@ -322,16 +322,16 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-power-red/90 to-electric-orange/90" />
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-6 uppercase">
+            <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold text-pure-white mb-4 uppercase">
               Ready To Transform?
             </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
+            <p className="text-lg text-white/90 max-w-xl mx-auto mb-8">
               Join APEX Performance today and get your first week free. No
               commitment, no pressure – just results.
             </p>
@@ -349,9 +349,9 @@ export default function HomePage() {
       </section>
 
       {/* Trainers Section */}
-      <section className="py-32 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <section className="py-16 sm:py-20 bg-deep-black">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <SectionHeading
               title="MEET OUR TRAINERS"
               subtitle="World-class coaches dedicated to your success"
@@ -359,14 +359,14 @@ export default function HomePage() {
             />
             <Link
               href="/trainers"
-              className="mt-6 md:mt-0 inline-flex items-center text-power-red hover:text-electric-orange transition-colors font-medium"
+              className="inline-flex items-center text-power-red hover:text-electric-orange transition-colors font-medium whitespace-nowrap"
             >
               View All Trainers
               <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {trainers.slice(0, 3).map((trainer, index) => (
               <TrainerCard key={trainer.id} trainer={trainer} index={index} />
             ))}
@@ -375,14 +375,14 @@ export default function HomePage() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-32 bg-card border-y border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 sm:py-20 bg-card border-y border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="SUCCESS STORIES"
             subtitle="Hear from our members who transformed their lives"
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 quote:
@@ -412,13 +412,13 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-8 rounded-2xl bg-deep-black border border-border"
+                className="p-6 rounded-2xl bg-deep-black border border-border"
               >
-                <div className="flex mb-4">
+                <div className="flex mb-3">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-electric-orange"
+                      className="w-4 h-4 text-electric-orange"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -426,29 +426,29 @@ export default function HomePage() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-300 text-sm mb-4">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
-                    width={48}
-                    height={48}
+                    width={40}
+                    height={40}
                     className="rounded-full object-cover"
                   />
                   <div>
-                    <div className="font-semibold text-pure-white">
+                    <div className="font-semibold text-pure-white text-sm">
                       {testimonial.name}
                     </div>
-                    <div className="text-sm text-gray-500">{testimonial.role}</div>
+                    <div className="text-xs text-gray-500">{testimonial.role}</div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-10 text-center">
             <Link href="/transformations">
               <Button variant="outline">
                 View All Transformations
@@ -460,7 +460,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 bg-deep-black relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-deep-black relative overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070"
           alt="Workout motivation"
@@ -468,18 +468,18 @@ export default function HomePage() {
           className="object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/80 to-deep-black/60" />
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="heading-font text-4xl md:text-6xl lg:text-7xl font-bold text-pure-white mb-6 uppercase">
+            <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold text-pure-white mb-4 uppercase">
               Your Journey
               <br />
               <span className="text-gradient">Starts Here</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-xl mx-auto mb-10">
+            <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
               Every rep counts. Every day matters. Start today.
             </p>
             <Link href="/trial">

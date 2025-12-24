@@ -41,23 +41,23 @@ export default function ClassesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-deep-black relative overflow-hidden">
+      <section className="pt-28 pb-16 bg-deep-black relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-power-red/10 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-electric-orange/10 rounded-full blur-[150px]" />
         </div>
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-font text-5xl md:text-7xl font-bold text-pure-white mb-6">
+            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
               FIND YOUR
               <br />
               <span className="text-gradient">PERFECT CLASS</span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-xl mx-auto">
               From high-intensity HIIT to mindful yoga, discover classes that
               match your fitness goals and schedule.
             </p>
@@ -66,8 +66,8 @@ export default function ClassesPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="py-8 bg-card border-y border-border sticky top-20 z-40">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-6 bg-card border-y border-border sticky top-20 z-40">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Search Bar */}
           <div className="relative max-w-xl mx-auto mb-6">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
@@ -119,8 +119,8 @@ export default function ClassesPage() {
       </section>
 
       {/* Classes Grid */}
-      <section className="py-24 bg-deep-black">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-deep-black">
+        <div className="max-w-6xl mx-auto px-6">
           {/* Results Count */}
           <div className="mb-8 flex items-center justify-between">
             <p className="text-gray-400">
@@ -181,8 +181,8 @@ export default function ClassesPage() {
       </section>
 
       {/* Schedule Overview */}
-      <section className="py-32 bg-card border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 bg-card border-t border-border">
+        <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             title="WEEKLY SCHEDULE"
             subtitle="Plan your week with our comprehensive class schedule"

@@ -41,12 +41,12 @@ export function Navigation() {
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex-shrink-0">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
             >
-              <span className="heading-font text-3xl font-bold tracking-tight uppercase">
+              <span className="heading-font text-2xl font-bold tracking-tight uppercase">
                 <span className="text-gradient">Apex</span>
                 <span className="text-pure-white ml-1">Performance</span>
               </span>
@@ -54,33 +54,35 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="relative text-sm font-medium text-gray-300 hover:text-pure-white transition-colors group whitespace-nowrap px-1"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-power-red to-electric-orange transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
+          <div className="hidden lg:flex items-center justify-center flex-1 mx-8">
+            <div className="flex items-center space-x-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="relative text-sm font-medium text-gray-300 hover:text-pure-white transition-colors group whitespace-nowrap"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-power-red to-electric-orange transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* CTA Button */}
-          <div className="hidden xl:flex items-center ml-4">
+          <div className="hidden lg:block flex-shrink-0">
             <Link
               href="/trial"
-              className="relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-power-red to-electric-orange text-pure-white font-bold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-power-red/30 hover:scale-105 whitespace-nowrap"
+              className="inline-block px-6 py-2.5 rounded-full bg-gradient-to-r from-power-red to-electric-orange text-pure-white font-bold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-power-red/30 hover:scale-105"
             >
-              <span className="relative z-10">Start Free Trial</span>
+              Start Free Trial
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="xl:hidden p-2 text-pure-white hover:text-power-red transition-colors"
+            className="lg:hidden p-2 text-pure-white hover:text-power-red transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -96,7 +98,7 @@ export function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="xl:hidden bg-deep-black/98 backdrop-blur-lg border-t border-white/10"
+            className="lg:hidden bg-deep-black/98 backdrop-blur-lg border-t border-white/10"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
               {navLinks.map((link, index) => (
