@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --power-red: #EF4444;
+  --electric-orange: #F97316;
+  --deep-black: #0A0A0A;
+  --pure-white: #FFFFFF;
+  --steel-gray: #374151;
+  --success-green: #22C55E;
+
+  /* Semantic Colors */
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --muted: #1F1F1F;
+  --muted-foreground: #9CA3AF;
+  --card: #141414;
+  --card-foreground: #FFFFFF;
+  --border: #262626;
+  --ring: #EF4444;
+
+  /* Fonts */
+  --font-oswald: 'Oswald', sans-serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-power-red: var(--power-red);
+  --color-electric-orange: var(--electric-orange);
+  --color-deep-black: var(--deep-black);
+  --color-pure-white: var(--pure-white);
+  --color-steel-gray: var(--steel-gray);
+  --color-success-green: var(--success-green);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-oswald: 'Oswald', sans-serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--deep-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--steel-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--power-red);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--power-red) 0%, var(--electric-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--power-red) 0%, var(--electric-orange) 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(180deg, var(--deep-black) 0%, #1a1a1a 100%);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glow effects */
+.glow-red {
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.3);
+}
+
+.glow-orange {
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.3);
+}
+
+/* Animation keyframes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Hero video overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.3) 0%,
+    rgba(10, 10, 10, 0.6) 50%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2);
+}
+
+/* Intensity indicator bars */
+.intensity-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--steel-gray);
+}
+
+.intensity-bar.active {
+  background: linear-gradient(90deg, var(--power-red), var(--electric-orange));
+}
+
+/* Section divider */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--power-red), transparent);
+}
+
+/* Font utilities */
+.font-oswald {
+  font-family: var(--font-oswald);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
