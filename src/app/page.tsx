@@ -173,7 +173,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto w-full"
+            className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -205,9 +205,9 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section id="stats-section" className="py-28 bg-card border-y border-border">
+      <section id="stats-section" className="py-24 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -264,7 +264,7 @@ export default function HomePage() {
             subtitle="Experience the difference with our premium facilities and expert guidance"
           />
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -272,15 +272,15 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-2xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover"
+                className="group p-6 rounded-2xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover text-center"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-7 h-7 text-pure-white" />
                 </div>
-                <h3 className="heading-font text-xl font-bold text-pure-white mb-3 uppercase">
+                <h3 className="heading-font text-lg font-bold text-pure-white mb-2 uppercase">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-400 text-sm">{feature.description}</p>
               </motion.div>
             ))}
           </div>
