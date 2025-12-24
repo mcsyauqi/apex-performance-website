@@ -35,14 +35,15 @@ export function ClassCard({ classData, index = 0 }: ClassCardProps) {
       <Link href={`/classes/${classData.slug}`}>
         <div className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-power-red/50 transition-all duration-500 card-hover">
           {/* Image Container */}
-          <div className="relative h-56 overflow-hidden">
+          <div className="relative h-56 overflow-hidden bg-steel-gray">
             <Image
               src={imageUrl}
               alt={classData.name}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
 
             {/* Category Badge */}
             <div className="absolute top-4 left-4">

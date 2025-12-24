@@ -33,16 +33,17 @@ export function TrainerCard({ trainer, index = 0 }: TrainerCardProps) {
       <Link href={`/trainers/${trainer.slug}`}>
         <div className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-power-red/50 transition-all duration-500 card-hover">
           {/* Image Container */}
-          <div className="relative h-80 overflow-hidden">
+          <div className="relative h-80 overflow-hidden bg-steel-gray">
             <Image
               src={imageUrl}
               alt={trainer.name}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
 
             {/* Overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
             {/* Social Links */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">

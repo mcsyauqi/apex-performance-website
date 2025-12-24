@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Clock,
@@ -17,6 +18,24 @@ import { Button } from "@/components/ui/button";
 import { classes } from "@/data/classes";
 import { trainers } from "@/data/trainers";
 import { cn } from "@/lib/utils";
+
+const classImages: Record<string, string> = {
+  "HIIT": "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?q=80&w=800",
+  "Strength": "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?q=80&w=800",
+  "Yoga": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800",
+  "Cycling": "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800",
+  "Boxing": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=800",
+  "Pilates": "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800",
+};
+
+const trainerImages: Record<string, string> = {
+  "marcus-chen": "https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=200",
+  "sarah-johnson": "https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=200",
+  "emma-williams": "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=200",
+  "jake-martinez": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=200",
+  "mike-thompson": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=200",
+  "lisa-anderson": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=200",
+};
 
 export default function ClassDetailPage() {
   const params = useParams();
@@ -132,14 +151,20 @@ export default function ClassDetailPage() {
               </Link>
             </motion.div>
 
-            {/* Image Placeholder */}
+            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative h-[400px] rounded-3xl overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-power-red/30 to-electric-orange/30" />
+              <Image
+                src={classImages[classData.category] || classImages["HIIT"]}
+                alt={classData.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 rounded-full bg-pure-white/10 backdrop-blur-sm flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
                   <svg
@@ -229,7 +254,14 @@ export default function ClassDetailPage() {
             </h2>
 
             <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8 p-8 rounded-3xl bg-card border border-border">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-power-red to-electric-orange flex-shrink-0" />
+              <div className="relative w-32 h-32 rounded-full overflow-hidden flex-shrink-0">
+                <Image
+                  src={trainerImages[trainer.slug] || trainerImages["marcus-chen"]}
+                  alt={trainer.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="text-center md:text-left">
                 <h3 className="heading-font text-2xl font-bold text-pure-white mb-1">
                   {trainer.name}

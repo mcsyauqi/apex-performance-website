@@ -54,12 +54,12 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-sm font-medium text-gray-300 hover:text-pure-white transition-colors group"
+                className="relative text-sm font-medium text-gray-300 hover:text-pure-white transition-colors group whitespace-nowrap"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-power-red to-electric-orange transition-all duration-300 group-hover:w-full" />
@@ -68,7 +68,7 @@ export function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden xl:flex items-center space-x-4">
             <Link
               href="/trial"
               className="relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-power-red to-electric-orange text-pure-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-power-red/30 hover:scale-105"
@@ -80,7 +80,7 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-pure-white hover:text-power-red transition-colors"
+            className="xl:hidden p-2 text-pure-white hover:text-power-red transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -96,7 +96,7 @@ export function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-deep-black/98 backdrop-blur-lg border-t border-white/10"
+            className="xl:hidden bg-deep-black/98 backdrop-blur-lg border-t border-white/10"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
               {navLinks.map((link, index) => (
