@@ -96,7 +96,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 bg-card border-y border-border">
+      <section className="py-16 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
@@ -125,7 +125,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-24 bg-deep-black">
+      <section className="py-32 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -314,7 +314,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-card border-t border-border">
+      <section className="py-32 bg-card border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="QUICK ANSWERS"

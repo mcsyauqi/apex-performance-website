@@ -54,12 +54,12 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-6">
+          <div className="hidden xl:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-sm font-medium text-gray-300 hover:text-pure-white transition-colors group whitespace-nowrap"
+                className="relative text-base font-medium text-gray-300 hover:text-pure-white transition-colors group whitespace-nowrap"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-power-red to-electric-orange transition-all duration-300 group-hover:w-full" />
@@ -71,7 +71,7 @@ export function Navigation() {
           <div className="hidden xl:flex items-center space-x-4">
             <Link
               href="/trial"
-              className="relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-power-red to-electric-orange text-pure-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-power-red/30 hover:scale-105"
+              className="relative overflow-hidden px-8 py-4 rounded-full bg-gradient-to-r from-power-red to-electric-orange text-pure-white font-bold text-base transition-all duration-300 hover:shadow-lg hover:shadow-power-red/30 hover:scale-105"
             >
               <span className="relative z-10">Start Free Trial</span>
             </Link>

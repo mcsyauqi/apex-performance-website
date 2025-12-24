@@ -97,7 +97,7 @@ export default function TrainersPage() {
       </section>
 
       {/* Trainers Grid */}
-      <section className="py-16 bg-deep-black">
+      <section className="py-24 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-8">
             <p className="text-gray-400">
@@ -118,7 +118,7 @@ export default function TrainersPage() {
       </section>
 
       {/* Why Our Trainers */}
-      <section className="py-24 bg-card border-t border-border">
+      <section className="py-32 bg-card border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="WHY TRAIN WITH US"

@@ -119,7 +119,7 @@ export default function ClassesPage() {
       </section>
 
       {/* Classes Grid */}
-      <section className="py-16 bg-deep-black">
+      <section className="py-24 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Results Count */}
           <div className="mb-8 flex items-center justify-between">
@@ -181,7 +181,7 @@ export default function ClassesPage() {
       </section>
 
       {/* Schedule Overview */}
-      <section className="py-24 bg-card border-t border-border">
+      <section className="py-32 bg-card border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="WEEKLY SCHEDULE"

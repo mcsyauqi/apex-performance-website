@@ -102,7 +102,7 @@ export default function MembershipPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-24 bg-deep-black">
+      <section className="py-32 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {membershipPlans.map((plan, index) => {
@@ -205,7 +205,7 @@ export default function MembershipPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-32 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="COMPARE PLANS"
@@ -325,7 +325,7 @@ export default function MembershipPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 bg-deep-black">
+      <section className="py-32 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="MEMBERSHIP BENEFITS"
@@ -359,7 +359,7 @@ export default function MembershipPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-card border-t border-border">
+      <section className="py-32 bg-card border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="FREQUENTLY ASKED QUESTIONS"
@@ -413,7 +413,7 @@ export default function MembershipPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-gradient-to-r from-power-red to-electric-orange">
+      <section className="py-32 bg-gradient-to-r from-power-red to-electric-orange">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="heading-font text-4xl md:text-5xl font-bold text-pure-white mb-6">
             READY TO START?

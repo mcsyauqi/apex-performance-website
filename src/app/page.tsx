@@ -173,7 +173,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
+            className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto w-full"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -205,7 +205,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section id="stats-section" className="py-20 bg-card border-y border-border">
+      <section id="stats-section" className="py-28 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <motion.div
@@ -257,7 +257,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-deep-black">
+      <section className="py-32 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="WHY CHOOSE APEX"
@@ -288,7 +288,7 @@ export default function HomePage() {
       </section>
 
       {/* Classes Section */}
-      <section className="py-24 bg-gradient-dark">
+      <section className="py-32 bg-gradient-dark">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <SectionHeading
@@ -314,7 +314,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-32 relative overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=2075"
           alt="Gym workout"
@@ -349,7 +349,7 @@ export default function HomePage() {
       </section>
 
       {/* Trainers Section */}
-      <section className="py-24 bg-deep-black">
+      <section className="py-32 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <SectionHeading
@@ -375,7 +375,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-32 bg-card border-y border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeading
             title="SUCCESS STORIES"

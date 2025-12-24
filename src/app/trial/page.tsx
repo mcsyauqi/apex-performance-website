@@ -196,7 +196,7 @@ export default function TrialPage() {
       </section>
 
       {/* Form Section */}
-      <section className="py-16 bg-deep-black">
+      <section className="py-24 bg-deep-black">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto">
             {/* Progress Steps */}
