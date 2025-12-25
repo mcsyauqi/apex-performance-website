@@ -2,134 +2,140 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Check, ArrowRight, Zap, Crown, Dumbbell } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, ArrowRight } from "lucide-react";
 import { membershipPlans } from "@/data/membership";
 import { formatCurrency } from "@/lib/utils";
-import { cn } from "@/lib/utils";
 
 export default function MembershipPage() {
   const [annual, setAnnual] = useState(false);
 
   return (
-    <main className="bg-deep-black min-h-screen">
+    <>
       {/* Hero */}
-      <section className="pt-32 pb-16 px-8 lg:px-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <span className="text-power-red text-sm font-bold tracking-[0.3em] uppercase">Memberships</span>
-            <h1 className="heading-font text-5xl lg:text-7xl font-black text-pure-white mt-4 mb-6">
-              INVEST IN
-              <br />
-              <span className="text-gradient">YOURSELF</span>
-            </h1>
-            <p className="text-gray-400 text-lg max-w-xl mx-auto">
-              Choose the plan that fits your lifestyle. Upgrade or downgrade anytime.
-            </p>
-          </motion.div>
+      <section style={{ paddingTop: 140, paddingBottom: 60 }}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <p style={{ color: "#EF4444", fontSize: 14, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", marginBottom: 16 }}>
+            Memberships
+          </p>
+          <h1 className="heading-font" style={{ fontSize: "clamp(40px, 6vw, 64px)", color: "white", marginBottom: 16 }}>
+            INVEST IN
+            <br />
+            <span className="text-gradient">YOURSELF</span>
+          </h1>
+          <p style={{ color: "#9CA3AF", fontSize: 18, maxWidth: 500, margin: "0 auto" }}>
+            Choose the plan that fits your lifestyle. Upgrade or downgrade anytime.
+          </p>
         </div>
       </section>
 
       {/* Toggle */}
-      <section className="px-8 lg:px-16 pb-8">
-        <div className="max-w-4xl mx-auto flex justify-center">
-          <div className="bg-card border border-border rounded-full p-1 inline-flex">
+      <section style={{ paddingBottom: 48 }}>
+        <div className="container" style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "inline-flex", background: "#111", borderRadius: 50, padding: 4, border: "1px solid #222" }}>
             <button
               onClick={() => setAnnual(false)}
-              className={cn(
-                "px-6 py-2 rounded-full text-sm font-medium transition-all",
-                !annual ? "bg-power-red text-white" : "text-gray-400"
-              )}
+              style={{
+                padding: "10px 24px",
+                borderRadius: 50,
+                fontSize: 14,
+                fontWeight: 500,
+                cursor: "pointer",
+                border: "none",
+                background: !annual ? "#EF4444" : "transparent",
+                color: !annual ? "white" : "#9CA3AF",
+              }}
             >
               Monthly
             </button>
             <button
               onClick={() => setAnnual(true)}
-              className={cn(
-                "px-6 py-2 rounded-full text-sm font-medium transition-all",
-                annual ? "bg-power-red text-white" : "text-gray-400"
-              )}
+              style={{
+                padding: "10px 24px",
+                borderRadius: 50,
+                fontSize: 14,
+                fontWeight: 500,
+                cursor: "pointer",
+                border: "none",
+                background: annual ? "#EF4444" : "transparent",
+                color: annual ? "white" : "#9CA3AF",
+              }}
             >
-              Annual <span className="text-success-green ml-1">-20%</span>
+              Annual <span style={{ color: "#22C55E", marginLeft: 4 }}>-20%</span>
             </button>
           </div>
         </div>
       </section>
 
-      {/* Pricing Cards - Horizontal */}
-      <section className="px-8 lg:px-16 pb-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-6">
-            {membershipPlans.map((plan, i) => {
+      {/* Pricing Cards */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="grid-3">
+            {membershipPlans.map((plan) => {
               const price = annual ? Math.floor(plan.price * 12 * 0.8) : plan.price;
-              const Icon = plan.id === "elite" ? Crown : plan.id === "pro" ? Zap : Dumbbell;
-
               return (
-                <motion.div
+                <div
                   key={plan.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className={cn(
-                    "relative rounded-3xl overflow-hidden",
-                    plan.highlighted
-                      ? "bg-gradient-to-b from-power-red/20 to-card border-2 border-power-red"
-                      : "bg-card border border-border"
-                  )}
+                  className="card"
+                  style={{
+                    padding: 32,
+                    border: plan.highlighted ? "2px solid #EF4444" : undefined,
+                    position: "relative",
+                  }}
                 >
                   {plan.highlighted && (
-                    <div className="absolute top-0 left-0 right-0 bg-power-red text-center py-2 text-xs font-bold text-white uppercase tracking-wider">
+                    <div style={{
+                      position: "absolute",
+                      top: -1,
+                      left: 0,
+                      right: 0,
+                      background: "#EF4444",
+                      color: "white",
+                      textAlign: "center",
+                      padding: "8px 0",
+                      fontSize: 12,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      borderRadius: "16px 16px 0 0",
+                    }}>
                       Most Popular
                     </div>
                   )}
 
-                  <div className={cn("p-8", plan.highlighted && "pt-14")}>
-                    <div className={cn(
-                      "w-14 h-14 rounded-2xl flex items-center justify-center mb-6",
-                      plan.highlighted
-                        ? "bg-power-red"
-                        : "bg-gradient-to-br from-power-red/20 to-electric-orange/20"
-                    )}>
-                      <Icon className={cn("w-7 h-7", plan.highlighted ? "text-white" : "text-power-red")} />
+                  <div style={{ paddingTop: plan.highlighted ? 24 : 0 }}>
+                    <h3 className="heading-font" style={{ fontSize: 24, color: "white", marginBottom: 8 }}>{plan.name}</h3>
+                    <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 24 }}>{plan.description}</p>
+
+                    <div style={{ marginBottom: 24 }}>
+                      <span className="heading-font" style={{ fontSize: 48, color: "white" }}>{formatCurrency(price)}</span>
+                      <span style={{ color: "#6B7280", marginLeft: 8 }}>/{annual ? "year" : "month"}</span>
                     </div>
 
-                    <h3 className="heading-font text-2xl font-bold text-pure-white mb-2">{plan.name}</h3>
-                    <p className="text-gray-500 text-sm mb-6">{plan.description}</p>
-
-                    <div className="mb-8">
-                      <span className="heading-font text-5xl font-black text-pure-white">
-                        {formatCurrency(price)}
-                      </span>
-                      <span className="text-gray-500 ml-2">/{annual ? "year" : "month"}</span>
-                    </div>
-
-                    <Link href="/trial">
-                      <Button
-                        fullWidth
-                        variant={plan.highlighted ? "primary" : "outline"}
-                        className="mb-8"
-                      >
-                        Get Started
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
+                    <Link
+                      href="/trial"
+                      className="btn"
+                      style={{
+                        width: "100%",
+                        marginBottom: 24,
+                        background: plan.highlighted ? "linear-gradient(135deg, #EF4444, #F97316)" : "transparent",
+                        color: plan.highlighted ? "white" : "#9CA3AF",
+                        border: plan.highlighted ? "none" : "1px solid #222",
+                      }}
+                    >
+                      Get Started <ArrowRight size={18} />
                     </Link>
 
-                    <ul className="space-y-3">
-                      {plan.features.map(feature => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <div className="w-5 h-5 rounded-full bg-success-green/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <Check className="w-3 h-3 text-success-green" />
-                          </div>
-                          <span className="text-gray-300 text-sm">{feature}</span>
+                    <ul style={{ listStyle: "none", padding: 0 }}>
+                      {plan.features.map((feature) => (
+                        <li key={feature} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 12, color: "#9CA3AF", fontSize: 14 }}>
+                          <span style={{ width: 20, height: 20, borderRadius: "50%", background: "rgba(34,197,94,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <Check size={12} color="#22C55E" />
+                          </span>
+                          {feature}
                         </li>
                       ))}
                     </ul>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -137,34 +143,27 @@ export default function MembershipPage() {
       </section>
 
       {/* FAQ */}
-      <section className="px-8 lg:px-16 py-20 border-t border-border">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="heading-font text-3xl font-bold text-pure-white text-center mb-12">
+      <section className="section" style={{ background: "#111" }}>
+        <div className="container" style={{ maxWidth: 800 }}>
+          <h2 className="heading-font" style={{ fontSize: 32, color: "white", textAlign: "center", marginBottom: 48 }}>
             Common Questions
           </h2>
 
-          <div className="space-y-4">
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {[
               { q: "Can I switch plans?", a: "Yes, upgrade or downgrade anytime. Changes apply at next billing cycle." },
               { q: "Is there a contract?", a: "No contracts. Cancel anytime with 30-day notice." },
-              { q: "What's included in the free trial?", a: "Full access to facilities, classes, and one personal training session." },
-              { q: "Do you offer corporate rates?", a: "Yes! Contact us for groups of 10+ employees." },
-            ].map((faq, i) => (
-              <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-card border border-border rounded-2xl p-6"
-              >
-                <h3 className="text-pure-white font-semibold mb-2">{faq.q}</h3>
-                <p className="text-gray-400 text-sm">{faq.a}</p>
-              </motion.div>
+              { q: "What's in the free trial?", a: "Full access to facilities, classes, and one personal training session." },
+              { q: "Corporate rates?", a: "Yes! Contact us for groups of 10+ employees." },
+            ].map((faq) => (
+              <div key={faq.q} className="card" style={{ padding: 24 }}>
+                <h4 style={{ color: "white", fontSize: 16, marginBottom: 8 }}>{faq.q}</h4>
+                <p style={{ color: "#6B7280", fontSize: 14 }}>{faq.a}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

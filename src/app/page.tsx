@@ -2,300 +2,193 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight, Play, Star, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { classes } from "@/data/classes";
 import { trainers } from "@/data/trainers";
 
 export default function HomePage() {
   return (
-    <main className="bg-deep-black">
-      {/* Hero - Split Screen */}
-      <section className="min-h-screen grid lg:grid-cols-2">
-        {/* Left - Content */}
-        <div className="flex flex-col justify-center px-8 lg:px-16 py-32 lg:py-0">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="text-power-red text-sm font-bold tracking-[0.3em] uppercase mb-4 block">
-              Premium Fitness
-            </span>
-            <h1 className="heading-font text-5xl lg:text-7xl font-black text-pure-white leading-[0.9] mb-6">
-              FORGE
-              <br />
-              YOUR
-              <br />
-              <span className="text-gradient">LEGACY</span>
-            </h1>
-            <p className="text-gray-400 text-lg max-w-md mb-8">
-              Where elite athletes and beginners alike push beyond limits.
-              Your transformation starts with a single step.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/trial">
-                <Button size="lg">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Button variant="ghost" size="lg" className="group">
-                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                Watch Story
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right - Image */}
-        <div className="relative hidden lg:block">
+    <>
+      {/* Hero Section */}
+      <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
+        {/* Background Image */}
+        <div style={{ position: "absolute", inset: 0 }}>
           <Image
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200"
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000"
             alt="Gym"
             fill
-            className="object-cover"
+            style={{ objectFit: "cover" }}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-deep-black via-deep-black/50 to-transparent" />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.4) 100%)" }} />
+        </div>
 
-          {/* Floating Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="absolute bottom-16 left-8 right-8 grid grid-cols-3 gap-4"
-          >
+        {/* Content */}
+        <div className="container" style={{ position: "relative", zIndex: 10, paddingTop: 120, paddingBottom: 80 }}>
+          <div style={{ maxWidth: 600 }}>
+            <p style={{ color: "#EF4444", fontSize: 14, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", marginBottom: 16 }}>
+              Premium Fitness
+            </p>
+            <h1 className="heading-font" style={{ fontSize: "clamp(48px, 8vw, 80px)", lineHeight: 1, color: "white", marginBottom: 24 }}>
+              UNLEASH
+              <br />
+              <span className="text-gradient">YOUR POTENTIAL</span>
+            </h1>
+            <p style={{ color: "#9CA3AF", fontSize: 18, marginBottom: 32, maxWidth: 480 }}>
+              Where champions are made. Transform your body and mind with world-class equipment and expert trainers.
+            </p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <Link href="/trial" className="btn btn-primary">
+                Start Free Trial <ArrowRight size={18} />
+              </Link>
+              <Link href="/classes" className="btn btn-outline">
+                View Classes
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section style={{ background: "#111", borderTop: "1px solid #222", borderBottom: "1px solid #222" }}>
+        <div className="container" style={{ paddingTop: 48, paddingBottom: 48 }}>
+          <div className="grid-4" style={{ textAlign: "center" }}>
             {[
-              { value: "5K+", label: "Members" },
-              { value: "50+", label: "Classes" },
-              { value: "15+", label: "Trainers" },
+              { value: "5,000+", label: "Active Members" },
+              { value: "50+", label: "Weekly Classes" },
+              { value: "15+", label: "Expert Trainers" },
+              { value: "24/7", label: "Access" },
             ].map((stat) => (
-              <div key={stat.label} className="bg-deep-black/80 backdrop-blur-sm border border-border rounded-xl p-4 text-center">
-                <div className="heading-font text-2xl font-bold text-gradient">{stat.value}</div>
-                <div className="text-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
+              <div key={stat.label}>
+                <p className="heading-font text-gradient" style={{ fontSize: 36, marginBottom: 4 }}>{stat.value}</p>
+                <p style={{ color: "#6B7280", fontSize: 14 }}>{stat.label}</p>
               </div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Bento Grid Features */}
-      <section className="px-8 lg:px-16 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="heading-font text-4xl lg:text-5xl font-bold text-pure-white mb-4">
-            WHY <span className="text-gradient">APEX</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-          {/* Large Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="col-span-2 row-span-2 relative rounded-3xl overflow-hidden group"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=800"
-              alt="Equipment"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/40 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="heading-font text-2xl font-bold text-pure-white mb-2">
-                World-Class Equipment
-              </h3>
-              <p className="text-gray-300 text-sm">
-                200+ pieces of premium equipment from Rogue, Hammer Strength & Life Fitness
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Small Cards */}
-          {[
-            { title: "24/7 Access", desc: "Train anytime", color: "from-power-red to-electric-orange" },
-            { title: "Expert Coaches", desc: "Certified trainers", color: "from-electric-orange to-yellow-500" },
-            { title: "Recovery Zone", desc: "Sauna & cold plunge", color: "from-power-red to-pink-500" },
-            { title: "Group Classes", desc: "50+ weekly", color: "from-electric-orange to-power-red" },
-          ].map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`bg-gradient-to-br ${item.color} rounded-3xl p-6 flex flex-col justify-end aspect-square`}
-            >
-              <h3 className="heading-font text-lg font-bold text-pure-white">{item.title}</h3>
-              <p className="text-white/80 text-sm">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Classes Horizontal Scroll */}
-      <section className="py-20 border-y border-border">
-        <div className="px-8 lg:px-16 mb-8 flex items-end justify-between">
-          <div>
-            <span className="text-power-red text-sm font-bold tracking-[0.2em] uppercase">Classes</span>
-            <h2 className="heading-font text-4xl font-bold text-pure-white mt-2">
-              Find Your Flow
-            </h2>
           </div>
-          <Link href="/classes" className="text-power-red hover:text-electric-orange transition-colors flex items-center gap-1 text-sm font-medium">
-            View All <ChevronRight className="w-4 h-4" />
-          </Link>
         </div>
+      </section>
 
-        <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex gap-6 px-8 lg:px-16 pb-4" style={{ width: "max-content" }}>
-            {classes.slice(0, 6).map((cls, i) => (
-              <motion.div
-                key={cls.id}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="w-72 flex-shrink-0 group"
-              >
-                <div className="relative h-48 rounded-2xl overflow-hidden mb-4">
-                  <Image
-                    src={cls.image}
-                    alt={cls.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1 bg-power-red text-white text-xs font-bold rounded-full uppercase">
+      {/* About Section */}
+      <section className="section">
+        <div className="container">
+          <div className="grid-2" style={{ alignItems: "center", gap: 64 }}>
+            <div>
+              <p style={{ color: "#EF4444", fontSize: 14, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", marginBottom: 16 }}>
+                Why APEX
+              </p>
+              <h2 className="heading-font" style={{ fontSize: 40, color: "white", marginBottom: 24 }}>
+                MORE THAN A GYM
+              </h2>
+              <p style={{ color: "#9CA3AF", fontSize: 16, marginBottom: 24, lineHeight: 1.8 }}>
+                APEX Performance is a complete fitness ecosystem designed for your success.
+                From state-of-the-art equipment to personalized training programs,
+                we provide everything you need to achieve your goals.
+              </p>
+              <ul style={{ listStyle: "none", padding: 0 }}>
+                {["World-class equipment", "Expert certified trainers", "50+ weekly group classes", "Recovery & wellness zone"].map((item) => (
+                  <li key={item} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12, color: "#9CA3AF" }}>
+                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#EF4444" }} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div style={{ position: "relative", height: 400, borderRadius: 16, overflow: "hidden" }}>
+              <Image
+                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=800"
+                alt="Gym equipment"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Classes Section */}
+      <section className="section" style={{ background: "#111" }}>
+        <div className="container">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 48, flexWrap: "wrap", gap: 16 }}>
+            <div>
+              <p style={{ color: "#EF4444", fontSize: 14, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>
+                Classes
+              </p>
+              <h2 className="heading-font" style={{ fontSize: 40, color: "white" }}>
+                FIND YOUR WORKOUT
+              </h2>
+            </div>
+            <Link href="/classes" style={{ color: "#EF4444", fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+              View All →
+            </Link>
+          </div>
+
+          <div className="grid-3">
+            {classes.slice(0, 6).map((cls) => (
+              <div key={cls.id} className="card" style={{ overflow: "hidden" }}>
+                <div style={{ position: "relative", height: 200 }}>
+                  <Image src={cls.image} alt={cls.name} fill style={{ objectFit: "cover" }} />
+                  <div style={{ position: "absolute", top: 16, left: 16 }}>
+                    <span style={{ background: "#EF4444", color: "white", padding: "6px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600, textTransform: "uppercase" }}>
                       {cls.category}
                     </span>
                   </div>
                 </div>
-                <h3 className="heading-font text-xl font-bold text-pure-white group-hover:text-power-red transition-colors">
-                  {cls.name}
-                </h3>
-                <p className="text-gray-500 text-sm">{cls.duration} min • {cls.trainer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trainers Grid */}
-      <section className="px-8 lg:px-16 py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-power-red text-sm font-bold tracking-[0.2em] uppercase">Our Team</span>
-            <h2 className="heading-font text-4xl font-bold text-pure-white mt-2">
-              Elite Coaches
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {trainers.slice(0, 4).map((trainer, i) => (
-              <motion.div
-                key={trainer.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group"
-              >
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
-                  <Image
-                    src={trainer.image}
-                    alt={trainer.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div style={{ padding: 24 }}>
+                  <h3 className="heading-font" style={{ fontSize: 20, color: "white", marginBottom: 8 }}>{cls.name}</h3>
+                  <p style={{ color: "#6B7280", fontSize: 14 }}>{cls.duration} min • {cls.trainer}</p>
                 </div>
-                <h3 className="heading-font text-lg font-bold text-pure-white">{trainer.name}</h3>
-                <p className="text-power-red text-sm">{trainer.title}</p>
-              </motion.div>
+              </div>
             ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link href="/trainers">
-              <Button variant="outline">
-                Meet All Trainers
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonial Full Width */}
-      <section className="relative py-32 overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2000"
-          alt="Background"
-          fill
-          className="object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-power-red/20 to-electric-orange/20" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-8 text-center">
-          <div className="flex justify-center gap-1 mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-electric-orange fill-electric-orange" />
-            ))}
-          </div>
-          <blockquote className="text-2xl lg:text-4xl text-pure-white font-light italic mb-8 leading-relaxed">
-            &ldquo;APEX changed my life. I lost 30kg and gained confidence I never knew I had. The trainers here truly care about your success.&rdquo;
-          </blockquote>
-          <div className="flex items-center justify-center gap-4">
-            <Image
-              src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=100"
-              alt="Member"
-              width={56}
-              height={56}
-              className="rounded-full object-cover"
-            />
-            <div className="text-left">
-              <div className="text-pure-white font-semibold">Michael R.</div>
-              <div className="text-gray-400 text-sm">Member since 2023</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA - Minimal */}
-      <section className="px-8 lg:px-16 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="heading-font text-5xl lg:text-7xl font-black text-pure-white mb-6">
-              READY TO
-              <br />
-              <span className="text-gradient">BEGIN?</span>
-            </h2>
-            <p className="text-gray-400 text-xl mb-10 max-w-lg mx-auto">
-              Your first week is on us. No contracts, no pressure.
+      {/* Trainers Section */}
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <p style={{ color: "#EF4444", fontSize: 14, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>
+              Our Team
             </p>
-            <Link href="/trial">
-              <Button size="lg" className="text-lg px-10 py-6">
-                Claim Your Free Trial
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+            <h2 className="heading-font" style={{ fontSize: 40, color: "white" }}>
+              EXPERT TRAINERS
+            </h2>
+          </div>
+
+          <div className="grid-4">
+            {trainers.slice(0, 4).map((trainer) => (
+              <div key={trainer.id} style={{ textAlign: "center" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "3/4", borderRadius: 16, overflow: "hidden", marginBottom: 16 }}>
+                  <Image src={trainer.image} alt={trainer.name} fill style={{ objectFit: "cover" }} />
+                </div>
+                <h3 className="heading-font" style={{ fontSize: 18, color: "white", marginBottom: 4 }}>{trainer.name}</h3>
+                <p style={{ color: "#EF4444", fontSize: 14 }}>{trainer.title}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: 48 }}>
+            <Link href="/trainers" className="btn btn-outline">
+              Meet All Trainers <ArrowRight size={18} />
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
-    </main>
+
+      {/* CTA Section */}
+      <section style={{ background: "linear-gradient(135deg, #EF4444, #F97316)", padding: "80px 0" }}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <h2 className="heading-font" style={{ fontSize: 48, color: "white", marginBottom: 16 }}>
+            READY TO START?
+          </h2>
+          <p style={{ color: "rgba(255,255,255,0.9)", fontSize: 18, marginBottom: 32, maxWidth: 500, margin: "0 auto 32px" }}>
+            Your first week is free. No commitment, no pressure – just results.
+          </p>
+          <Link href="/trial" className="btn" style={{ background: "white", color: "#EF4444" }}>
+            Claim Your Free Trial <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

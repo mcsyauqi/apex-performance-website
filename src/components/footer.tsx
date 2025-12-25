@@ -1,206 +1,60 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  Instagram,
-  Facebook,
-  Twitter,
-  Youtube,
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-} from "lucide-react";
-
-const footerLinks = {
-  company: [
-    { name: "About Us", href: "/about" },
-    { name: "Careers", href: "/careers" },
-    { name: "Press", href: "/press" },
-    { name: "Blog", href: "/blog" },
-  ],
-  programs: [
-    { name: "Group Classes", href: "/classes" },
-    { name: "Personal Training", href: "/trainers" },
-    { name: "Corporate Wellness", href: "/corporate" },
-    { name: "Youth Programs", href: "/youth" },
-  ],
-  membership: [
-    { name: "Plans & Pricing", href: "/membership" },
-    { name: "Free Trial", href: "/trial" },
-    { name: "Gift Cards", href: "/gift-cards" },
-    { name: "Referral Program", href: "/referral" },
-  ],
-  support: [
-    { name: "FAQs", href: "/faqs" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-  ],
-};
-
-const socialLinks = [
-  { name: "Instagram", icon: Instagram, href: "https://instagram.com" },
-  { name: "Facebook", icon: Facebook, href: "https://facebook.com" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
-  { name: "YouTube", icon: Youtube, href: "https://youtube.com" },
-];
 
 export function Footer() {
   return (
-    <footer className="bg-deep-black border-t border-white/10">
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6">
-              <span className="heading-font text-2xl font-bold tracking-tight uppercase">
-                <span className="text-gradient">Apex</span>
-                <span className="text-pure-white ml-1">Performance</span>
-              </span>
-            </Link>
-            <p className="text-gray-400 mb-6 max-w-sm">
-              Where champions are made. Join our community and unleash your
-              potential with world-class facilities and expert trainers.
+    <footer style={{ background: "#0A0A0A", borderTop: "1px solid #222", padding: "64px 0 32px" }}>
+      <div className="container">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 48, marginBottom: 48 }}>
+          {/* Brand */}
+          <div>
+            <span className="heading-font" style={{ fontSize: 24, fontWeight: 700 }}>
+              <span className="text-gradient">APEX</span>
+              <span style={{ color: "white", marginLeft: 4 }}>Performance</span>
+            </span>
+            <p style={{ color: "#6B7280", fontSize: 14, marginTop: 16, lineHeight: 1.7 }}>
+              Where champions are made. Premium fitness experience in Jakarta.
             </p>
-
-            {/* Contact Info */}
-            <div className="space-y-3 text-sm text-gray-400">
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-power-red flex-shrink-0 mt-0.5" />
-                <span>
-                  123 Fitness Street, Sudirman Central
-                  <br />
-                  Jakarta 12190, Indonesia
-                </span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-power-red flex-shrink-0" />
-                <span>+62 21 1234 5678</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-power-red flex-shrink-0" />
-                <span>hello@apexperformance.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Clock className="w-5 h-5 text-power-red flex-shrink-0" />
-                <span>24/7 for Elite Members</span>
-              </div>
-            </div>
           </div>
 
-          {/* Links */}
+          {/* Quick Links */}
           <div>
-            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-power-red transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h4 style={{ color: "white", fontSize: 14, fontWeight: 600, marginBottom: 16 }}>Quick Links</h4>
+            {["Classes", "Trainers", "Membership", "Contact"].map((item) => (
+              <Link
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                style={{ display: "block", color: "#6B7280", fontSize: 14, marginBottom: 12, textDecoration: "none" }}
+              >
+                {item}
+              </Link>
+            ))}
           </div>
 
+          {/* Contact */}
           <div>
-            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
-              Programs
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.programs.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-power-red transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h4 style={{ color: "white", fontSize: 14, fontWeight: 600, marginBottom: 16 }}>Contact</h4>
+            <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 12 }}>123 Fitness Street, Jakarta</p>
+            <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 12 }}>+62 21 1234 5678</p>
+            <p style={{ color: "#6B7280", fontSize: 14 }}>hello@apex.com</p>
           </div>
 
+          {/* Hours */}
           <div>
-            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
-              Membership
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.membership.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-power-red transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="heading-font text-lg font-semibold text-pure-white mb-4 uppercase">
-              Support
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-power-red transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h4 style={{ color: "white", fontSize: 14, fontWeight: 600, marginBottom: 16 }}>Hours</h4>
+            <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 12 }}>Mon-Fri: 6AM - 11PM</p>
+            <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 12 }}>Sat-Sun: 7AM - 9PM</p>
+            <p style={{ color: "#6B7280", fontSize: 14 }}>Elite: 24/7 Access</p>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-gray-500 text-sm">
-                &copy; {new Date().getFullYear()} APEX Performance. All rights
-                reserved.
-              </p>
-              <p className="text-gray-600 text-xs mt-1">
-                Created by{" "}
-                <span className="text-power-red font-medium">
-                  Creativism Digital Marketing
-                </span>
-              </p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex items-center space-x-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-power-red hover:text-pure-white transition-all duration-300"
-                  aria-label={social.name}
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </div>
-          </div>
+        {/* Bottom */}
+        <div style={{ borderTop: "1px solid #222", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+          <p style={{ color: "#4B5563", fontSize: 12 }}>
+            © 2024 APEX Performance. All rights reserved.
+          </p>
+          <p style={{ color: "#4B5563", fontSize: 12 }}>
+            Created by <span style={{ color: "#EF4444" }}>Creativism Digital Marketing</span>
+          </p>
         </div>
       </div>
     </footer>
