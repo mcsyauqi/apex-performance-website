@@ -34,7 +34,7 @@ export const trainers: Trainer[] = [
     specialties: ["HIIT", "Functional Training", "Athletic Performance"],
     bio: "Marcus is a former professional athlete who discovered his passion for coaching after a career-ending injury. With over 12 years of experience in high-performance training, he has helped hundreds of clients achieve their fitness goals. His HIIT Inferno class is legendary for transforming bodies and minds. Marcus believes that everyone has an athlete within them waiting to be unleashed.",
     shortBio: "Former pro athlete turned elite coach. 12+ years experience in high-performance training.",
-    image: "/images/trainers/marcus.svg",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%231a1a1a' width='400' height='500'/%3E%3Crect fill='%23EF4444' opacity='0.1' width='400' height='500'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23EF4444'/%3E%3Cellipse cx='200' cy='340' rx='90' ry='130' fill='%23EF4444'/%3E%3Ctext x='200' y='480' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18' font-weight='bold'%3EMARCUS CHEN%3C/text%3E%3C/svg%3E",
     certifications: [
       "NASM Certified Personal Trainer",
       "CrossFit Level 3 Trainer",
@@ -73,7 +73,7 @@ export const trainers: Trainer[] = [
     specialties: ["Strength Training", "Powerlifting", "Body Recomposition"],
     bio: "Sarah is a competitive powerlifter and certified strength coach who empowers clients to build confidence through strength. She specializes in helping beginners master proper form and experienced lifters break through plateaus. Her approach combines scientific programming with personalized attention to help you achieve sustainable results.",
     shortBio: "Competitive powerlifter empowering clients through strength training.",
-    image: "/images/trainers/sarah.svg",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%231a1a1a' width='400' height='500'/%3E%3Crect fill='%23F97316' opacity='0.1' width='400' height='500'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23F97316'/%3E%3Cellipse cx='200' cy='340' rx='80' ry='130' fill='%23F97316'/%3E%3Ctext x='200' y='480' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18' font-weight='bold'%3ESARAH JOHNSON%3C/text%3E%3C/svg%3E",
     certifications: [
       "CSCS - Certified Strength and Conditioning Specialist",
       "USA Powerlifting Coach",
@@ -111,7 +111,7 @@ export const trainers: Trainer[] = [
     specialties: ["Vinyasa Yoga", "Meditation", "Stress Management"],
     bio: "Emma discovered yoga during a stressful corporate career and never looked back. After training in India and Bali, she brings an authentic, accessible approach to yoga that welcomes practitioners of all levels. Her classes blend physical practice with mindfulness techniques to help you find balance in your busy life.",
     shortBio: "Certified yoga instructor bringing mindfulness and movement together.",
-    image: "/images/trainers/emma.svg",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%231a1a1a' width='400' height='500'/%3E%3Crect fill='%2322C55E' opacity='0.1' width='400' height='500'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%2322C55E'/%3E%3Cellipse cx='200' cy='340' rx='80' ry='130' fill='%2322C55E'/%3E%3Ctext x='200' y='480' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18' font-weight='bold'%3EEMMA WILLIAMS%3C/text%3E%3C/svg%3E",
     certifications: [
       "RYT-500 Yoga Alliance",
       "Mindfulness-Based Stress Reduction (MBSR)",
@@ -149,7 +149,7 @@ export const trainers: Trainer[] = [
     specialties: ["Indoor Cycling", "Endurance Training", "Heart Rate Training"],
     bio: "Jake is a former competitive cyclist who brings the thrill of the road into the spin studio. His high-energy classes combine killer playlists, motivating coaching, and scientifically-designed intervals to deliver maximum results. Whether you're a cycling newbie or seasoned rider, Jake will push you to new heights.",
     shortBio: "Former competitive cyclist bringing road-level intensity to the studio.",
-    image: "/images/trainers/jake.svg",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%231a1a1a' width='400' height='500'/%3E%3Crect fill='%233B82F6' opacity='0.1' width='400' height='500'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%233B82F6'/%3E%3Cellipse cx='200' cy='340' rx='90' ry='130' fill='%233B82F6'/%3E%3Ctext x='200' y='480' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18' font-weight='bold'%3EJAKE MARTINEZ%3C/text%3E%3C/svg%3E",
     certifications: [
       "Schwinn Cycling Certified",
       "ACE Group Fitness Instructor",
@@ -188,7 +188,7 @@ export const trainers: Trainer[] = [
     specialties: ["Boxing", "Kickboxing", "Self-Defense"],
     bio: "Mike is a former amateur boxing champion with a passion for teaching the sweet science. His classes focus on proper technique, conditioning, and the mental discipline that boxing develops. Mike creates a supportive environment where everyone from beginners to advanced fighters can improve their skills.",
     shortBio: "Former amateur boxing champion teaching technique and discipline.",
-    image: "/images/trainers/mike.svg",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%231a1a1a' width='400' height='500'/%3E%3Crect fill='%23EF4444' opacity='0.1' width='400' height='500'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23EF4444'/%3E%3Cellipse cx='200' cy='340' rx='95' ry='130' fill='%23EF4444'/%3E%3Ctext x='200' y='480' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18' font-weight='bold'%3EMIKE THOMPSON%3C/text%3E%3C/svg%3E",
     certifications: [
       "USA Boxing Coach Level 2",
       "NASM Performance Enhancement Specialist",
@@ -225,7 +225,7 @@ export const trainers: Trainer[] = [
     specialties: ["Mat Pilates", "Reformer Pilates", "Injury Rehabilitation"],
     bio: "Lisa combines her background in physical therapy with her Pilates expertise to help clients move better and feel stronger. She specializes in working with clients recovering from injuries or dealing with chronic pain. Her attention to detail and focus on proper alignment makes her classes both challenging and therapeutic.",
     shortBio: "Physical therapist and Pilates expert focused on movement quality.",
-    image: "/images/trainers/lisa.svg",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%231a1a1a' width='400' height='500'/%3E%3Crect fill='%23A855F7' opacity='0.1' width='400' height='500'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23A855F7'/%3E%3Cellipse cx='200' cy='340' rx='80' ry='130' fill='%23A855F7'/%3E%3Ctext x='200' y='480' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18' font-weight='bold'%3ELISA ANDERSON%3C/text%3E%3C/svg%3E",
     certifications: [
       "PMA Certified Pilates Teacher",
       "Doctor of Physical Therapy",

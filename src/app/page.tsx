@@ -63,7 +63,7 @@ export default function HomePage() {
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0 }}>
           <img
-            src="/images/hero.svg"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='1200'%3E%3Crect fill='%231a1a1a' width='2000' height='1200'/%3E%3Crect x='1400' y='400' width='300' height='20' rx='10' fill='%23EF4444' opacity='0.3'/%3E%3Crect x='1380' y='380' width='40' height='60' rx='8' fill='%23EF4444' opacity='0.3'/%3E%3Crect x='1680' y='380' width='40' height='60' rx='8' fill='%23EF4444' opacity='0.3'/%3E%3Ccircle cx='1550' cy='600' r='100' fill='none' stroke='%23EF4444' stroke-width='8' opacity='0.2'/%3E%3Ccircle cx='1550' cy='600' r='60' fill='none' stroke='%23EF4444' stroke-width='8' opacity='0.2'/%3E%3Crect x='1500' y='750' width='100' height='200' rx='10' fill='%23EF4444' opacity='0.15'/%3E%3Crect x='1620' y='800' width='80' height='150' rx='10' fill='%23EF4444' opacity='0.15'/%3E%3C/svg%3E"
             alt="Gym"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
@@ -144,7 +144,7 @@ export default function HomePage() {
             </div>
             <div style={{ position: "relative", height: 400, borderRadius: 16, overflow: "hidden" }}>
               <img
-                src="/images/gym.svg"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%231a1a1a' width='800' height='600'/%3E%3Crect fill='%23EF4444' opacity='0.05' width='800' height='600'/%3E%3Crect x='200' y='280' width='150' height='20' rx='5' fill='%23EF4444'/%3E%3Crect x='175' y='255' width='35' height='70' rx='8' fill='%23EF4444'/%3E%3Crect x='340' y='255' width='35' height='70' rx='8' fill='%23EF4444'/%3E%3Ccircle cx='550' cy='320' r='60' fill='%23F97316'/%3E%3Cellipse cx='550' cy='240' rx='30' ry='25' fill='none' stroke='%23F97316' stroke-width='14'/%3E%3Ctext x='400' y='450' text-anchor='middle' fill='white' font-family='sans-serif' font-size='28' font-weight='bold'%3EAPEX PERFORMANCE%3C/text%3E%3Ctext x='400' y='490' text-anchor='middle' fill='%236B7280' font-family='sans-serif' font-size='16'%3EWorld-Class Fitness%3C/text%3E%3C/svg%3E"
                 alt="Gym equipment"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
