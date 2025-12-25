@@ -34,7 +34,7 @@ export const trainers: Trainer[] = [
     specialties: ["HIIT", "Functional Training", "Athletic Performance"],
     bio: "Marcus is a former professional athlete who discovered his passion for coaching after a career-ending injury. With over 12 years of experience in high-performance training, he has helped hundreds of clients achieve their fitness goals. His HIIT Inferno class is legendary for transforming bodies and minds. Marcus believes that everyone has an athlete within them waiting to be unleashed.",
     shortBio: "Former pro athlete turned elite coach. 12+ years experience in high-performance training.",
-    image: "/images/trainers/marcus.jpg",
+    image: "https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&h=400&fit=crop",
     certifications: [
       "NASM Certified Personal Trainer",
       "CrossFit Level 3 Trainer",
@@ -73,7 +73,7 @@ export const trainers: Trainer[] = [
     specialties: ["Strength Training", "Powerlifting", "Body Recomposition"],
     bio: "Sarah is a competitive powerlifter and certified strength coach who empowers clients to build confidence through strength. She specializes in helping beginners master proper form and experienced lifters break through plateaus. Her approach combines scientific programming with personalized attention to help you achieve sustainable results.",
     shortBio: "Competitive powerlifter empowering clients through strength training.",
-    image: "/images/trainers/sarah.jpg",
+    image: "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&h=400&fit=crop",
     certifications: [
       "CSCS - Certified Strength and Conditioning Specialist",
       "USA Powerlifting Coach",
@@ -111,7 +111,7 @@ export const trainers: Trainer[] = [
     specialties: ["Vinyasa Yoga", "Meditation", "Stress Management"],
     bio: "Emma discovered yoga during a stressful corporate career and never looked back. After training in India and Bali, she brings an authentic, accessible approach to yoga that welcomes practitioners of all levels. Her classes blend physical practice with mindfulness techniques to help you find balance in your busy life.",
     shortBio: "Certified yoga instructor bringing mindfulness and movement together.",
-    image: "/images/trainers/emma.jpg",
+    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=400&fit=crop",
     certifications: [
       "RYT-500 Yoga Alliance",
       "Mindfulness-Based Stress Reduction (MBSR)",
@@ -149,7 +149,7 @@ export const trainers: Trainer[] = [
     specialties: ["Indoor Cycling", "Endurance Training", "Heart Rate Training"],
     bio: "Jake is a former competitive cyclist who brings the thrill of the road into the spin studio. His high-energy classes combine killer playlists, motivating coaching, and scientifically-designed intervals to deliver maximum results. Whether you're a cycling newbie or seasoned rider, Jake will push you to new heights.",
     shortBio: "Former competitive cyclist bringing road-level intensity to the studio.",
-    image: "/images/trainers/jake.jpg",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop",
     certifications: [
       "Schwinn Cycling Certified",
       "ACE Group Fitness Instructor",
@@ -188,7 +188,7 @@ export const trainers: Trainer[] = [
     specialties: ["Boxing", "Kickboxing", "Self-Defense"],
     bio: "Mike is a former amateur boxing champion with a passion for teaching the sweet science. His classes focus on proper technique, conditioning, and the mental discipline that boxing develops. Mike creates a supportive environment where everyone from beginners to advanced fighters can improve their skills.",
     shortBio: "Former amateur boxing champion teaching technique and discipline.",
-    image: "/images/trainers/mike.jpg",
+    image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&h=400&fit=crop",
     certifications: [
       "USA Boxing Coach Level 2",
       "NASM Performance Enhancement Specialist",
@@ -225,7 +225,7 @@ export const trainers: Trainer[] = [
     specialties: ["Mat Pilates", "Reformer Pilates", "Injury Rehabilitation"],
     bio: "Lisa combines her background in physical therapy with her Pilates expertise to help clients move better and feel stronger. She specializes in working with clients recovering from injuries or dealing with chronic pain. Her attention to detail and focus on proper alignment makes her classes both challenging and therapeutic.",
     shortBio: "Physical therapist and Pilates expert focused on movement quality.",
-    image: "/images/trainers/lisa.jpg",
+    image: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=400&h=400&fit=crop",
     certifications: [
       "PMA Certified Pilates Teacher",
       "Doctor of Physical Therapy",

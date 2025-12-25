@@ -34,7 +34,7 @@ export const classes: ClassType[] = [
     calories: 600,
     trainer: "Marcus Chen",
     trainerId: "marcus-chen",
-    image: "/images/classes/hiit.jpg",
+    image: "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=800&h=600&fit=crop",
     schedule: [
       { day: "Monday", time: "06:00", room: "Studio A" },
       { day: "Wednesday", time: "06:00", room: "Studio A" },
@@ -66,7 +66,7 @@ export const classes: ClassType[] = [
     calories: 450,
     trainer: "Sarah Johnson",
     trainerId: "sarah-johnson",
-    image: "/images/classes/strength.jpg",
+    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=800&h=600&fit=crop",
     schedule: [
       { day: "Tuesday", time: "07:00", room: "Weight Room" },
       { day: "Thursday", time: "07:00", room: "Weight Room" },
@@ -97,7 +97,7 @@ export const classes: ClassType[] = [
     calories: 250,
     trainer: "Emma Williams",
     trainerId: "emma-williams",
-    image: "/images/classes/yoga.jpg",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop",
     schedule: [
       { day: "Monday", time: "08:00", room: "Zen Studio" },
       { day: "Wednesday", time: "08:00", room: "Zen Studio" },
@@ -129,7 +129,7 @@ export const classes: ClassType[] = [
     calories: 550,
     trainer: "Jake Martinez",
     trainerId: "jake-martinez",
-    image: "/images/classes/cycling.jpg",
+    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&fit=crop",
     schedule: [
       { day: "Monday", time: "17:30", room: "Spin Studio" },
       { day: "Tuesday", time: "06:00", room: "Spin Studio" },
@@ -161,7 +161,7 @@ export const classes: ClassType[] = [
     calories: 700,
     trainer: "Mike Thompson",
     trainerId: "mike-thompson",
-    image: "/images/classes/boxing.jpg",
+    image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&h=600&fit=crop",
     schedule: [
       { day: "Tuesday", time: "18:00", room: "Combat Studio" },
       { day: "Thursday", time: "18:00", room: "Combat Studio" },
@@ -192,7 +192,7 @@ export const classes: ClassType[] = [
     calories: 300,
     trainer: "Lisa Anderson",
     trainerId: "lisa-anderson",
-    image: "/images/classes/pilates.jpg",
+    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=600&fit=crop",
     schedule: [
       { day: "Monday", time: "10:00", room: "Pilates Studio" },
       { day: "Wednesday", time: "10:00", room: "Pilates Studio" },
