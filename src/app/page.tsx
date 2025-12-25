@@ -14,7 +14,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div style={{ position: "absolute", inset: 0 }}>
           <Image
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000"
+            src="/images/hero.svg"
             alt="Gym"
             fill
             style={{ objectFit: "cover" }}
@@ -95,7 +95,7 @@ export default function HomePage() {
             </div>
             <div style={{ position: "relative", height: 400, borderRadius: 16, overflow: "hidden" }}>
               <Image
-                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=800"
+                src="/images/gym.svg"
                 alt="Gym equipment"
                 fill
                 style={{ objectFit: "cover" }}

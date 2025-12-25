@@ -1,0 +1,15 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect x="300" y="280" width="200" height="10" rx="5" fill="#EF4444"/>
+  <circle cx="350" cy="240" r="25" fill="#EF4444"/>
+  <path d="M350 265 C350 265 380 240 400 280" stroke="#EF4444" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M350 265 C350 265 320 290 340 320" stroke="#EF4444" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">CORE PILATES</text>
+  <text x="400" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#6B7280">Strength &amp; Flexibility</text>
+</svg>
