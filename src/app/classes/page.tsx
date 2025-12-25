@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Clock, Flame } from "lucide-react";
 import { classes, categories } from "@/data/classes";
 
@@ -65,9 +64,9 @@ export default function ClassesPage() {
           <div className="grid-3">
             {filtered.map((cls) => (
               <div key={cls.id} className="card" style={{ overflow: "hidden" }}>
-                <div style={{ position: "relative", height: 200 }}>
-                  <Image src={cls.image} alt={cls.name} fill style={{ objectFit: "cover" }} />
-                  <div style={{ position: "absolute", top: 16, left: 16 }}>
+                <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
+                  <img src={cls.image} alt={cls.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <div style={{ position: "absolute", top: 16, left: 16, zIndex: 10 }}>
                     <span style={{ background: "#EF4444", color: "white", padding: "6px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600, textTransform: "uppercase" }}>
                       {cls.category}
                     </span>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { trainers } from "@/data/trainers";
@@ -31,8 +30,8 @@ export default function TrainersPage() {
           <div className="grid-3">
             {trainers.map((trainer) => (
               <div key={trainer.id} className="card" style={{ overflow: "hidden" }}>
-                <div style={{ position: "relative", height: 300 }}>
-                  <Image src={trainer.image} alt={trainer.name} fill style={{ objectFit: "cover" }} />
+                <div style={{ position: "relative", height: 300, overflow: "hidden" }}>
+                  <img src={trainer.image} alt={trainer.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ padding: 24 }}>
                   <h3 className="heading-font" style={{ fontSize: 22, color: "white", marginBottom: 4 }}>{trainer.name}</h3>

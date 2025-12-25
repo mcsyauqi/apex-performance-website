@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { classes } from "@/data/classes";
 import { trainers } from "@/data/trainers";
@@ -13,12 +12,10 @@ export default function HomePage() {
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
         {/* Background Image */}
         <div style={{ position: "absolute", inset: 0 }}>
-          <Image
+          <img
             src="/images/hero.svg"
             alt="Gym"
-            fill
-            style={{ objectFit: "cover" }}
-            priority
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.4) 100%)" }} />
         </div>
@@ -94,11 +91,10 @@ export default function HomePage() {
               </ul>
             </div>
             <div style={{ position: "relative", height: 400, borderRadius: 16, overflow: "hidden" }}>
-              <Image
+              <img
                 src="/images/gym.svg"
                 alt="Gym equipment"
-                fill
-                style={{ objectFit: "cover" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
           </div>
@@ -125,9 +121,9 @@ export default function HomePage() {
           <div className="grid-3">
             {classes.slice(0, 6).map((cls) => (
               <div key={cls.id} className="card" style={{ overflow: "hidden" }}>
-                <div style={{ position: "relative", height: 200 }}>
-                  <Image src={cls.image} alt={cls.name} fill style={{ objectFit: "cover" }} />
-                  <div style={{ position: "absolute", top: 16, left: 16 }}>
+                <div style={{ position: "relative", height: 200, overflow: "hidden" }}>
+                  <img src={cls.image} alt={cls.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <div style={{ position: "absolute", top: 16, left: 16, zIndex: 10 }}>
                     <span style={{ background: "#EF4444", color: "white", padding: "6px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600, textTransform: "uppercase" }}>
                       {cls.category}
                     </span>
@@ -158,8 +154,8 @@ export default function HomePage() {
           <div className="grid-4">
             {trainers.slice(0, 4).map((trainer) => (
               <div key={trainer.id} style={{ textAlign: "center" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "3/4", borderRadius: 16, overflow: "hidden", marginBottom: 16 }}>
-                  <Image src={trainer.image} alt={trainer.name} fill style={{ objectFit: "cover" }} />
+                <div style={{ width: "100%", aspectRatio: "3/4", borderRadius: 16, overflow: "hidden", marginBottom: 16 }}>
+                  <img src={trainer.image} alt={trainer.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <h3 className="heading-font" style={{ fontSize: 18, color: "white", marginBottom: 4 }}>{trainer.name}</h3>
                 <p style={{ color: "#EF4444", fontSize: 14 }}>{trainer.title}</p>
