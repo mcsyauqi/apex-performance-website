@@ -1,13 +1,10 @@
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1a1a"/>
-      <stop offset="100%" style="stop-color:#0a0a0a"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="600" fill="url(#bg)"/>
-  <circle cx="400" cy="250" r="80" fill="none" stroke="#EF4444" stroke-width="8"/>
-  <path d="M360 250 L400 210 L440 250 L400 290 Z" fill="#EF4444"/>
-  <text x="400" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white">HIIT INFERNO</text>
-  <text x="400" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#6B7280">High Intensity Training</text>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1a1a1a"/>
+  <rect x="0" y="0" width="800" height="600" fill="#EF4444" opacity="0.1"/>
+  <circle cx="400" cy="260" r="100" fill="#EF4444" opacity="0.3"/>
+  <circle cx="400" cy="260" r="70" fill="#EF4444" opacity="0.5"/>
+  <circle cx="400" cy="260" r="40" fill="#EF4444"/>
+  <polygon points="400,220 430,280 370,280" fill="#fff"/>
+  <rect x="250" y="420" width="300" height="8" rx="4" fill="#EF4444"/>
+  <rect x="280" y="450" width="240" height="6" rx="3" fill="#333"/>
 </svg>
