@@ -1,496 +1,301 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  ArrowRight,
-  Users,
-  Calendar,
-  Award,
-  Dumbbell,
-  Heart,
-  Target,
-  ChevronRight,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Play, Star, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { ClassCard } from "@/components/ui/class-card";
-import { TrainerCard } from "@/components/ui/trainer-card";
 import { classes } from "@/data/classes";
 import { trainers } from "@/data/trainers";
 
-// Register GSAP plugins
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-const stats = [
-  { value: "5,000+", label: "Active Members", icon: Users },
-  { value: "50+", label: "Classes/Week", icon: Calendar },
-  { value: "15+", label: "Expert Trainers", icon: Award },
-];
-
-const features = [
-  {
-    icon: Dumbbell,
-    title: "State-of-the-Art Equipment",
-    description: "Premium machines and free weights from world-class brands",
-  },
-  {
-    icon: Users,
-    title: "Expert Trainers",
-    description: "Certified professionals dedicated to your success",
-  },
-  {
-    icon: Heart,
-    title: "Wellness Focus",
-    description: "Holistic approach to fitness, nutrition, and recovery",
-  },
-  {
-    icon: Target,
-    title: "Results Driven",
-    description: "Proven programs designed to achieve your goals",
-  },
-];
-
 export default function HomePage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [count3, setCount3] = useState(0);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: "#stats-section",
-        start: "top 80%",
-        onEnter: () => {
-          gsap.to({}, {
-            duration: 2,
-            onUpdate: function() {
-              setCount1(Math.floor(this.progress() * 5000));
-              setCount2(Math.floor(this.progress() * 50));
-              setCount3(Math.floor(this.progress() * 15));
-            }
-          });
-        },
-        once: true,
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <>
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      >
-        {/* Background Image */}
-        <motion.div
-          style={{ y }}
-          className="absolute inset-0"
-        >
+    <main className="bg-deep-black">
+      {/* Hero - Split Screen */}
+      <section className="min-h-screen grid lg:grid-cols-2">
+        {/* Left - Content */}
+        <div className="flex flex-col justify-center px-8 lg:px-16 py-32 lg:py-0">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-power-red text-sm font-bold tracking-[0.3em] uppercase mb-4 block">
+              Premium Fitness
+            </span>
+            <h1 className="heading-font text-5xl lg:text-7xl font-black text-pure-white leading-[0.9] mb-6">
+              FORGE
+              <br />
+              YOUR
+              <br />
+              <span className="text-gradient">LEGACY</span>
+            </h1>
+            <p className="text-gray-400 text-lg max-w-md mb-8">
+              Where elite athletes and beginners alike push beyond limits.
+              Your transformation starts with a single step.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/trial">
+                <Button size="lg">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Button variant="ghost" size="lg" className="group">
+                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                Watch Story
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Right - Image */}
+        <div className="relative hidden lg:block">
           <Image
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070"
-            alt="Gym background"
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200"
+            alt="Gym"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/70 via-deep-black/60 to-deep-black" />
-        </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-r from-deep-black via-deep-black/50 to-transparent" />
 
-        {/* Hero Content */}
-        <motion.div
-          style={{ opacity }}
-          className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center py-20"
-        >
+          {/* Floating Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6"
+            transition={{ delay: 0.5 }}
+            className="absolute bottom-16 left-8 right-8 grid grid-cols-3 gap-4"
           >
-            <span className="inline-block px-4 py-2 text-sm font-medium uppercase tracking-wider text-power-red bg-power-red/10 rounded-full border border-power-red/20">
-              Premium Fitness Experience
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="heading-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-pure-white mb-6 leading-tight uppercase"
-          >
-            Unleash Your
-            <br />
-            <span className="text-gradient">Potential</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8"
-          >
-            Where Champions Are Made. Every rep counts. Every day matters.
-            <br className="hidden sm:block" />
-            Start your transformation today.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-          >
-            <Link href="/trial">
-              <Button size="lg" className="w-full sm:w-auto">
-                Claim Your Free Trial
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link href="/classes">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                View Classes
-              </Button>
-            </Link>
-          </motion.div>
-
-          {/* Stats in Hero */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="grid grid-cols-3 gap-6 max-w-lg mx-auto"
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <stat.icon className="w-6 h-6 mx-auto mb-2 text-power-red" />
-                <div className="heading-font text-xl sm:text-2xl md:text-3xl font-bold text-pure-white">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-gray-400">{stat.label}</div>
+            {[
+              { value: "5K+", label: "Members" },
+              { value: "50+", label: "Classes" },
+              { value: "15+", label: "Trainers" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-deep-black/80 backdrop-blur-sm border border-border rounded-xl p-4 text-center">
+                <div className="heading-font text-2xl font-bold text-gradient">{stat.value}</div>
+                <div className="text-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-6 h-10 border-2 border-gray-500 rounded-full flex items-start justify-center p-1"
-          >
-            <motion.div className="w-1.5 h-3 bg-power-red rounded-full" />
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Stats Section */}
-      <section id="stats-section" className="py-16 bg-card border-y border-border">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-power-red/10 text-power-red mb-3">
-                <Users className="w-7 h-7" />
-              </div>
-              <div className="heading-font text-4xl font-bold text-pure-white mb-1">
-                {count1.toLocaleString()}+
-              </div>
-              <div className="text-gray-400 text-sm">Active Members</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-electric-orange/10 text-electric-orange mb-3">
-                <Calendar className="w-7 h-7" />
-              </div>
-              <div className="heading-font text-4xl font-bold text-pure-white mb-1">
-                {count2}+
-              </div>
-              <div className="text-gray-400 text-sm">Classes Per Week</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-success-green/10 text-success-green mb-3">
-                <Award className="w-7 h-7" />
-              </div>
-              <div className="heading-font text-4xl font-bold text-pure-white mb-1">
-                {count3}+
-              </div>
-              <div className="text-gray-400 text-sm">Expert Trainers</div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 sm:py-20 bg-deep-black">
-        <div className="max-w-5xl mx-auto px-6">
-          <SectionHeading
-            title="WHY CHOOSE APEX"
-            subtitle="Experience the difference with our premium facilities and expert guidance"
-          />
+      {/* Bento Grid Features */}
+      <section className="px-8 lg:px-16 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="heading-font text-4xl lg:text-5xl font-bold text-pure-white mb-4">
+            WHY <span className="text-gradient">APEX</span>
+          </h2>
+        </motion.div>
 
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {features.map((feature, index) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {/* Large Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="col-span-2 row-span-2 relative rounded-3xl overflow-hidden group"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=800"
+              alt="Equipment"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/40 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <h3 className="heading-font text-2xl font-bold text-pure-white mb-2">
+                World-Class Equipment
+              </h3>
+              <p className="text-gray-300 text-sm">
+                200+ pieces of premium equipment from Rogue, Hammer Strength & Life Fitness
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Small Cards */}
+          {[
+            { title: "24/7 Access", desc: "Train anytime", color: "from-power-red to-electric-orange" },
+            { title: "Expert Coaches", desc: "Certified trainers", color: "from-electric-orange to-yellow-500" },
+            { title: "Recovery Zone", desc: "Sauna & cold plunge", color: "from-power-red to-pink-500" },
+            { title: "Group Classes", desc: "50+ weekly", color: "from-electric-orange to-power-red" },
+          ].map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={`bg-gradient-to-br ${item.color} rounded-3xl p-6 flex flex-col justify-end aspect-square`}
+            >
+              <h3 className="heading-font text-lg font-bold text-pure-white">{item.title}</h3>
+              <p className="text-white/80 text-sm">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Classes Horizontal Scroll */}
+      <section className="py-20 border-y border-border">
+        <div className="px-8 lg:px-16 mb-8 flex items-end justify-between">
+          <div>
+            <span className="text-power-red text-sm font-bold tracking-[0.2em] uppercase">Classes</span>
+            <h2 className="heading-font text-4xl font-bold text-pure-white mt-2">
+              Find Your Flow
+            </h2>
+          </div>
+          <Link href="/classes" className="text-power-red hover:text-electric-orange transition-colors flex items-center gap-1 text-sm font-medium">
+            View All <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex gap-6 px-8 lg:px-16 pb-4" style={{ width: "max-content" }}>
+            {classes.slice(0, 6).map((cls, i) => (
               <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={cls.id}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-4 sm:p-6 rounded-2xl bg-card border border-border hover:border-power-red/50 transition-all duration-300 card-hover text-center"
+                transition={{ delay: i * 0.1 }}
+                className="w-72 flex-shrink-0 group"
               >
-                <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-6 h-6 text-pure-white" />
+                <div className="relative h-48 rounded-2xl overflow-hidden mb-4">
+                  <Image
+                    src={cls.image}
+                    alt={cls.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="px-3 py-1 bg-power-red text-white text-xs font-bold rounded-full uppercase">
+                      {cls.category}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="heading-font text-sm sm:text-base font-bold text-pure-white mb-2 uppercase">
-                  {feature.title}
+                <h3 className="heading-font text-xl font-bold text-pure-white group-hover:text-power-red transition-colors">
+                  {cls.name}
                 </h3>
-                <p className="text-gray-400 text-xs sm:text-sm">{feature.description}</p>
+                <p className="text-gray-500 text-sm">{cls.duration} min • {cls.trainer}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Classes Section */}
-      <section className="py-16 sm:py-20 bg-gradient-dark">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <SectionHeading
-              title="POPULAR CLASSES"
-              subtitle="Find your perfect workout from our diverse range of classes"
-              centered={false}
-            />
-            <Link
-              href="/classes"
-              className="inline-flex items-center text-power-red hover:text-electric-orange transition-colors font-medium whitespace-nowrap"
-            >
-              View All Classes
-              <ChevronRight className="w-5 h-5 ml-1" />
-            </Link>
+      {/* Trainers Grid */}
+      <section className="px-8 lg:px-16 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-power-red text-sm font-bold tracking-[0.2em] uppercase">Our Team</span>
+            <h2 className="heading-font text-4xl font-bold text-pure-white mt-2">
+              Elite Coaches
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {classes.slice(0, 6).map((classItem, index) => (
-              <ClassCard key={classItem.id} classData={classItem} index={index} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {trainers.slice(0, 4).map((trainer, i) => (
+              <motion.div
+                key={trainer.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group"
+              >
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
+                  <Image
+                    src={trainer.image}
+                    alt={trainer.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <h3 className="heading-font text-lg font-bold text-pure-white">{trainer.name}</h3>
+                <p className="text-power-red text-sm">{trainer.title}</p>
+              </motion.div>
             ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link href="/trainers">
+              <Button variant="outline">
+                Meet All Trainers
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="py-16 sm:py-20 relative overflow-hidden">
+      {/* Testimonial Full Width */}
+      <section className="relative py-32 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=2075"
-          alt="Gym workout"
+          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2000"
+          alt="Background"
           fill
-          className="object-cover"
+          className="object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-power-red/90 to-electric-orange/90" />
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-power-red/20 to-electric-orange/20" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-8 text-center">
+          <div className="flex justify-center gap-1 mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-6 h-6 text-electric-orange fill-electric-orange" />
+            ))}
+          </div>
+          <blockquote className="text-2xl lg:text-4xl text-pure-white font-light italic mb-8 leading-relaxed">
+            &ldquo;APEX changed my life. I lost 30kg and gained confidence I never knew I had. The trainers here truly care about your success.&rdquo;
+          </blockquote>
+          <div className="flex items-center justify-center gap-4">
+            <Image
+              src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=100"
+              alt="Member"
+              width={56}
+              height={56}
+              className="rounded-full object-cover"
+            />
+            <div className="text-left">
+              <div className="text-pure-white font-semibold">Michael R.</div>
+              <div className="text-gray-400 text-sm">Member since 2023</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA - Minimal */}
+      <section className="px-8 lg:px-16 py-20">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold text-pure-white mb-4 uppercase">
-              Ready To Transform?
-            </h2>
-            <p className="text-lg text-white/90 max-w-xl mx-auto mb-8">
-              Join APEX Performance today and get your first week free. No
-              commitment, no pressure – just results.
-            </p>
-            <Link href="/trial">
-              <Button
-                size="lg"
-                className="bg-pure-white text-power-red hover:bg-gray-100 hover:shadow-none"
-              >
-                Start Your Free Trial
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Trainers Section */}
-      <section className="py-16 sm:py-20 bg-deep-black">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <SectionHeading
-              title="MEET OUR TRAINERS"
-              subtitle="World-class coaches dedicated to your success"
-              centered={false}
-            />
-            <Link
-              href="/trainers"
-              className="inline-flex items-center text-power-red hover:text-electric-orange transition-colors font-medium whitespace-nowrap"
-            >
-              View All Trainers
-              <ChevronRight className="w-5 h-5 ml-1" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {trainers.slice(0, 3).map((trainer, index) => (
-              <TrainerCard key={trainer.id} trainer={trainer} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial Section */}
-      <section className="py-16 sm:py-20 bg-card border-y border-border">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            title="SUCCESS STORIES"
-            subtitle="Hear from our members who transformed their lives"
-          />
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                quote:
-                  "APEX completely changed my life. I've lost 30kg and gained a whole new perspective on fitness.",
-                name: "Michael R.",
-                role: "Member since 2023",
-                image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=200",
-              },
-              {
-                quote:
-                  "The trainers here are incredible. They pushed me beyond what I thought was possible.",
-                name: "Sarah K.",
-                role: "Member since 2022",
-                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200",
-              },
-              {
-                quote:
-                  "The community at APEX is what keeps me coming back. It's more than a gym – it's a family.",
-                name: "David L.",
-                role: "Member since 2021",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
-              },
-            ].map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-deep-black border border-border"
-              >
-                <div className="flex mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-4 h-4 text-electric-orange"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-300 text-sm mb-4">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-                <div className="flex items-center space-x-3">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={40}
-                    height={40}
-                    className="rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold text-pure-white text-sm">
-                      {testimonial.name}
-                    </div>
-                    <div className="text-xs text-gray-500">{testimonial.role}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link href="/transformations">
-              <Button variant="outline">
-                View All Transformations
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 sm:py-28 bg-deep-black relative overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070"
-          alt="Workout motivation"
-          fill
-          className="object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/80 to-deep-black/60" />
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold text-pure-white mb-4 uppercase">
-              Your Journey
+            <h2 className="heading-font text-5xl lg:text-7xl font-black text-pure-white mb-6">
+              READY TO
               <br />
-              <span className="text-gradient">Starts Here</span>
+              <span className="text-gradient">BEGIN?</span>
             </h2>
-            <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
-              Every rep counts. Every day matters. Start today.
+            <p className="text-gray-400 text-xl mb-10 max-w-lg mx-auto">
+              Your first week is on us. No contracts, no pressure.
             </p>
             <Link href="/trial">
-              <Button size="lg" className="animate-pulse-glow">
-                Join the Community
+              <Button size="lg" className="text-lg px-10 py-6">
+                Claim Your Free Trial
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </motion.div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

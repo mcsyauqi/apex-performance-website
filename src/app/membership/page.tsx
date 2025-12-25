@@ -3,199 +3,131 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Check,
-  X,
-  ArrowRight,
-  Dumbbell,
-  Users,
-  Calendar,
-  Heart,
-  Zap,
-  Crown,
-} from "lucide-react";
+import { Check, ArrowRight, Zap, Crown, Dumbbell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { membershipPlans, membershipBenefits } from "@/data/membership";
+import { membershipPlans } from "@/data/membership";
 import { formatCurrency } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-const iconMap: Record<string, React.ElementType> = {
-  dumbbell: Dumbbell,
-  users: Users,
-  calendar: Calendar,
-  heart: Heart,
-};
-
 export default function MembershipPage() {
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">(
-    "monthly"
-  );
+  const [annual, setAnnual] = useState(false);
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-power-red/10 rounded-full blur-[150px]" />
-        </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <main className="bg-deep-black min-h-screen">
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-8 lg:px-16">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
-              CHOOSE YOUR
+            <span className="text-power-red text-sm font-bold tracking-[0.3em] uppercase">Memberships</span>
+            <h1 className="heading-font text-5xl lg:text-7xl font-black text-pure-white mt-4 mb-6">
+              INVEST IN
               <br />
-              <span className="text-gradient">PATH TO GREATNESS</span>
+              <span className="text-gradient">YOURSELF</span>
             </h1>
-            <p className="text-lg text-gray-400 max-w-xl mx-auto">
-              Flexible membership options designed to fit your lifestyle and
-              fitness goals. Start your transformation today.
+            <p className="text-gray-400 text-lg max-w-xl mx-auto">
+              Choose the plan that fits your lifestyle. Upgrade or downgrade anytime.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Billing Toggle */}
-      <section className="py-6 bg-card border-y border-border">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex items-center justify-center space-x-4">
-            <span
+      {/* Toggle */}
+      <section className="px-8 lg:px-16 pb-8">
+        <div className="max-w-4xl mx-auto flex justify-center">
+          <div className="bg-card border border-border rounded-full p-1 inline-flex">
+            <button
+              onClick={() => setAnnual(false)}
               className={cn(
-                "text-lg font-medium transition-colors",
-                billingPeriod === "monthly"
-                  ? "text-pure-white"
-                  : "text-gray-500"
+                "px-6 py-2 rounded-full text-sm font-medium transition-all",
+                !annual ? "bg-power-red text-white" : "text-gray-400"
               )}
             >
               Monthly
-            </span>
-            <button
-              onClick={() =>
-                setBillingPeriod((prev) =>
-                  prev === "monthly" ? "yearly" : "monthly"
-                )
-              }
-              className="relative w-16 h-8 bg-steel-gray rounded-full transition-colors"
-            >
-              <motion.div
-                animate={{ x: billingPeriod === "yearly" ? 32 : 0 }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                className="absolute left-1 top-1 w-6 h-6 bg-gradient-to-r from-power-red to-electric-orange rounded-full"
-              />
             </button>
-            <span
+            <button
+              onClick={() => setAnnual(true)}
               className={cn(
-                "text-lg font-medium transition-colors",
-                billingPeriod === "yearly"
-                  ? "text-pure-white"
-                  : "text-gray-500"
+                "px-6 py-2 rounded-full text-sm font-medium transition-all",
+                annual ? "bg-power-red text-white" : "text-gray-400"
               )}
             >
-              Yearly
-              <span className="ml-2 text-sm text-success-green">(Save 20%)</span>
-            </span>
+              Annual <span className="text-success-green ml-1">-20%</span>
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Pricing Cards */}
-      <section className="py-16 bg-deep-black">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {membershipPlans.map((plan, index) => {
-              const price =
-                billingPeriod === "yearly"
-                  ? Math.floor(plan.price * 12 * 0.8)
-                  : plan.price;
+      {/* Pricing Cards - Horizontal */}
+      <section className="px-8 lg:px-16 pb-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-6">
+            {membershipPlans.map((plan, i) => {
+              const price = annual ? Math.floor(plan.price * 12 * 0.8) : plan.price;
+              const Icon = plan.id === "elite" ? Crown : plan.id === "pro" ? Zap : Dumbbell;
 
               return (
                 <motion.div
                   key={plan.id}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ delay: i * 0.1 }}
                   className={cn(
-                    "relative rounded-2xl overflow-hidden",
+                    "relative rounded-3xl overflow-hidden",
                     plan.highlighted
-                      ? "border-2 border-power-red"
-                      : "border border-border"
+                      ? "bg-gradient-to-b from-power-red/20 to-card border-2 border-power-red"
+                      : "bg-card border border-border"
                   )}
                 >
                   {plan.highlighted && (
-                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-power-red to-electric-orange text-center py-2 text-sm font-bold text-pure-white">
-                      MOST POPULAR
+                    <div className="absolute top-0 left-0 right-0 bg-power-red text-center py-2 text-xs font-bold text-white uppercase tracking-wider">
+                      Most Popular
                     </div>
                   )}
 
-                  <div
-                    className={cn(
-                      "p-6 bg-card",
-                      plan.highlighted && "pt-12"
-                    )}
-                  >
-                    {/* Plan Icon */}
-                    <div
-                      className={cn(
-                        "w-12 h-12 rounded-xl flex items-center justify-center mb-4",
-                        plan.highlighted
-                          ? "bg-gradient-to-br from-power-red to-electric-orange"
-                          : "bg-steel-gray"
-                      )}
-                    >
-                      {plan.id === "elite" ? (
-                        <Crown className="w-6 h-6 text-pure-white" />
-                      ) : plan.id === "pro" ? (
-                        <Zap className="w-6 h-6 text-pure-white" />
-                      ) : (
-                        <Dumbbell className="w-6 h-6 text-pure-white" />
-                      )}
+                  <div className={cn("p-8", plan.highlighted && "pt-14")}>
+                    <div className={cn(
+                      "w-14 h-14 rounded-2xl flex items-center justify-center mb-6",
+                      plan.highlighted
+                        ? "bg-power-red"
+                        : "bg-gradient-to-br from-power-red/20 to-electric-orange/20"
+                    )}>
+                      <Icon className={cn("w-7 h-7", plan.highlighted ? "text-white" : "text-power-red")} />
                     </div>
 
-                    <h3 className="heading-font text-xl font-bold text-pure-white mb-2">
-                      {plan.name}
-                    </h3>
-                    <p className="text-gray-400 text-sm mb-4">
-                      {plan.description}
-                    </p>
+                    <h3 className="heading-font text-2xl font-bold text-pure-white mb-2">{plan.name}</h3>
+                    <p className="text-gray-500 text-sm mb-6">{plan.description}</p>
 
-                    <div className="mb-6">
-                      <span className="heading-font text-4xl font-bold text-pure-white">
+                    <div className="mb-8">
+                      <span className="heading-font text-5xl font-black text-pure-white">
                         {formatCurrency(price)}
                       </span>
-                      <span className="text-gray-500 ml-2">
-                        /{billingPeriod === "yearly" ? "year" : "month"}
-                      </span>
+                      <span className="text-gray-500 ml-2">/{annual ? "year" : "month"}</span>
                     </div>
 
                     <Link href="/trial">
                       <Button
                         fullWidth
                         variant={plan.highlighted ? "primary" : "outline"}
-                        className="mb-6"
+                        className="mb-8"
                       >
                         Get Started
                         <ArrowRight className="ml-2 w-5 h-5" />
                       </Button>
                     </Link>
 
-                    <div className="space-y-3">
-                      {plan.features.map((feature) => (
-                        <div
-                          key={feature}
-                          className="flex items-start space-x-3"
-                        >
+                    <ul className="space-y-3">
+                      {plan.features.map(feature => (
+                        <li key={feature} className="flex items-start gap-3">
                           <div className="w-5 h-5 rounded-full bg-success-green/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                             <Check className="w-3 h-3 text-success-green" />
                           </div>
-                          <span className="text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </div>
+                          <span className="text-gray-300 text-sm">{feature}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
                 </motion.div>
               );
@@ -204,234 +136,35 @@ export default function MembershipPage() {
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="py-16 bg-card border-y border-border">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            title="COMPARE PLANS"
-            subtitle="Find the perfect membership for your fitness journey"
-          />
+      {/* FAQ */}
+      <section className="px-8 lg:px-16 py-20 border-t border-border">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="heading-font text-3xl font-bold text-pure-white text-center mb-12">
+            Common Questions
+          </h2>
 
-          <div className="mt-10 overflow-x-auto">
-            <table className="w-full min-w-[700px]">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-3 px-3 text-gray-400 font-normal text-sm">
-                    Features
-                  </th>
-                  {membershipPlans.map((plan) => (
-                    <th
-                      key={plan.id}
-                      className={cn(
-                        "text-center py-3 px-3 text-sm",
-                        plan.highlighted
-                          ? "text-power-red font-bold"
-                          : "text-pure-white font-medium"
-                      )}
-                    >
-                      {plan.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: "Gym Access", basic: true, pro: true, elite: true },
-                  {
-                    feature: "Group Classes",
-                    basic: "2/week",
-                    pro: "Unlimited",
-                    elite: "Unlimited",
-                  },
-                  {
-                    feature: "Personal Training",
-                    basic: false,
-                    pro: "1/month",
-                    elite: "4/month",
-                  },
-                  {
-                    feature: "24/7 Access",
-                    basic: false,
-                    pro: true,
-                    elite: true,
-                  },
-                  {
-                    feature: "Sauna & Steam Room",
-                    basic: false,
-                    pro: true,
-                    elite: true,
-                  },
-                  {
-                    feature: "Guest Passes",
-                    basic: false,
-                    pro: "2/month",
-                    elite: "Unlimited",
-                  },
-                  {
-                    feature: "Nutrition Consultation",
-                    basic: false,
-                    pro: true,
-                    elite: true,
-                  },
-                  {
-                    feature: "Private Locker",
-                    basic: false,
-                    pro: false,
-                    elite: true,
-                  },
-                  {
-                    feature: "Recovery Zone",
-                    basic: false,
-                    pro: false,
-                    elite: true,
-                  },
-                  {
-                    feature: "VIP Parking",
-                    basic: false,
-                    pro: false,
-                    elite: true,
-                  },
-                ].map((row, index) => (
-                  <tr
-                    key={row.feature}
-                    className={cn(
-                      "border-b border-border",
-                      index % 2 === 0 ? "bg-deep-black/50" : ""
-                    )}
-                  >
-                    <td className="py-3 px-3 text-gray-300 text-sm">{row.feature}</td>
-                    {["basic", "pro", "elite"].map((planType) => {
-                      const value = row[planType as keyof typeof row];
-                      return (
-                        <td key={planType} className="text-center py-3 px-3">
-                          {typeof value === "boolean" ? (
-                            value ? (
-                              <Check className="w-5 h-5 text-success-green mx-auto" />
-                            ) : (
-                              <X className="w-5 h-5 text-gray-600 mx-auto" />
-                            )
-                          ) : (
-                            <span className="text-gray-300 text-sm">{value}</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 bg-deep-black">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            title="MEMBERSHIP BENEFITS"
-            subtitle="Every membership includes access to our world-class facilities"
-          />
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {membershipBenefits.map((benefit, index) => {
-              const Icon = iconMap[benefit.icon] || Dumbbell;
-              return (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center p-6 rounded-2xl bg-card border border-border"
-                >
-                  <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-power-red to-electric-orange flex items-center justify-center mb-4">
-                    <Icon className="w-7 h-7 text-pure-white" />
-                  </div>
-                  <h3 className="heading-font text-lg font-bold text-pure-white mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm">{benefit.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-card border-t border-border">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            title="FREQUENTLY ASKED QUESTIONS"
-            subtitle="Everything you need to know about our memberships"
-          />
-
-          <div className="mt-10 max-w-3xl mx-auto space-y-4">
+          <div className="space-y-4">
             {[
-              {
-                question: "Can I switch my membership plan later?",
-                answer:
-                  "Yes! You can upgrade or downgrade your membership at any time. Changes will take effect at the start of your next billing cycle.",
-              },
-              {
-                question: "Is there a joining fee?",
-                answer:
-                  "We occasionally waive the joining fee during promotions. Contact us or start your free trial to learn about current offers.",
-              },
-              {
-                question: "Can I freeze my membership?",
-                answer:
-                  "Yes, all members can freeze their membership for up to 3 months per year for medical reasons or extended travel.",
-              },
-              {
-                question: "What happens after my free trial?",
-                answer:
-                  "After your 7-day free trial, you can choose the membership that best fits your needs. There's no obligation to continue.",
-              },
-              {
-                question: "Do you offer corporate memberships?",
-                answer:
-                  "Yes! We offer special corporate rates for companies with 10+ employees. Contact our sales team for more information.",
-              },
-            ].map((faq, index) => (
+              { q: "Can I switch plans?", a: "Yes, upgrade or downgrade anytime. Changes apply at next billing cycle." },
+              { q: "Is there a contract?", a: "No contracts. Cancel anytime with 30-day notice." },
+              { q: "What's included in the free trial?", a: "Full access to facilities, classes, and one personal training session." },
+              { q: "Do you offer corporate rates?", a: "Yes! Contact us for groups of 10+ employees." },
+            ].map((faq, i) => (
               <motion.div
-                key={faq.question}
+                key={faq.q}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-5 rounded-2xl bg-deep-black border border-border"
+                transition={{ delay: i * 0.1 }}
+                className="bg-card border border-border rounded-2xl p-6"
               >
-                <h3 className="font-semibold text-pure-white mb-2">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-400 text-sm">{faq.answer}</p>
+                <h3 className="text-pure-white font-semibold mb-2">{faq.q}</h3>
+                <p className="text-gray-400 text-sm">{faq.a}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-power-red to-electric-orange">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="heading-font text-3xl md:text-4xl font-bold text-pure-white mb-4">
-            READY TO START?
-          </h2>
-          <p className="text-lg text-white/90 max-w-xl mx-auto mb-8">
-            Try APEX Performance free for 7 days. No commitment required.
-          </p>
-          <Link href="/trial">
-            <Button
-              size="lg"
-              className="bg-pure-white text-power-red hover:bg-gray-100"
-            >
-              Claim Your Free Trial
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-    </>
+    </main>
   );
 }

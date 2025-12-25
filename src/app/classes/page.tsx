@@ -1,244 +1,189 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, Clock, Flame } from "lucide-react";
-import { ClassCard } from "@/components/ui/class-card";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { Clock, Flame, Users, X } from "lucide-react";
 import { classes, categories } from "@/data/classes";
 import { cn } from "@/lib/utils";
 
-const days = [
-  "All",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
 export default function ClassesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedDay, setSelectedDay] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [selected, setSelected] = useState<string | null>(null);
+  const [filter, setFilter] = useState("all");
 
-  const filteredClasses = classes.filter((classItem) => {
-    const matchesCategory =
-      selectedCategory === "all" || classItem.category === selectedCategory;
-    const matchesDay =
-      selectedDay === "All" ||
-      classItem.schedule.some((s) => s.day === selectedDay);
-    const matchesSearch =
-      classItem.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      classItem.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      classItem.trainer.toLowerCase().includes(searchQuery.toLowerCase());
-
-    return matchesCategory && matchesDay && matchesSearch;
-  });
+  const filtered = classes.filter(c => filter === "all" || c.category === filter);
+  const selectedClass = classes.find(c => c.id === selected);
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="pt-28 pb-12 bg-deep-black relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-power-red/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-electric-orange/10 rounded-full blur-[150px]" />
-        </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <main className="bg-deep-black min-h-screen">
+      {/* Hero - Minimal */}
+      <section className="pt-32 pb-16 px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
-            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mb-4">
-              FIND YOUR
+            <span className="text-power-red text-sm font-bold tracking-[0.3em] uppercase">Our Classes</span>
+            <h1 className="heading-font text-5xl lg:text-7xl font-black text-pure-white mt-4 mb-6">
+              MOVE YOUR
               <br />
-              <span className="text-gradient">PERFECT CLASS</span>
+              <span className="text-gradient">BODY</span>
             </h1>
-            <p className="text-lg text-gray-400 max-w-xl mx-auto">
-              From high-intensity HIIT to mindful yoga, discover classes that
-              match your fitness goals and schedule.
+            <p className="text-gray-400 text-lg max-w-xl">
+              From high-intensity workouts to mindful yoga, find the perfect class for your fitness journey.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Filters Section */}
-      <section className="py-6 bg-card border-y border-border sticky top-20 z-40">
-        <div className="max-w-5xl mx-auto px-6">
-          {/* Search Bar */}
-          <div className="relative max-w-xl mx-auto mb-4">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search classes, trainers, or categories..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-deep-black border border-border rounded-full text-pure-white placeholder:text-gray-500 focus:outline-none focus:border-power-red transition-colors"
-            />
-          </div>
-
-          {/* Category Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
-            {categories.map((category) => (
+      {/* Filter Pills */}
+      <section className="px-8 lg:px-16 pb-8 sticky top-20 z-30 bg-deep-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap gap-3">
+            {categories.map((cat) => (
               <button
-                key={category.value}
-                onClick={() => setSelectedCategory(category.value)}
+                key={cat.value}
+                onClick={() => setFilter(cat.value)}
                 className={cn(
-                  "px-3 py-1.5 rounded-full text-sm font-medium transition-all",
-                  selectedCategory === category.value
-                    ? "bg-gradient-to-r from-power-red to-electric-orange text-pure-white"
-                    : "bg-deep-black text-gray-400 hover:text-pure-white border border-border hover:border-power-red/50"
+                  "px-5 py-2 rounded-full text-sm font-medium transition-all",
+                  filter === cat.value
+                    ? "bg-power-red text-pure-white"
+                    : "bg-card border border-border text-gray-400 hover:text-pure-white hover:border-power-red/50"
                 )}
               >
-                {category.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Day Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {days.map((day) => (
-              <button
-                key={day}
-                onClick={() => setSelectedDay(day)}
-                className={cn(
-                  "px-3 py-1.5 rounded-full text-xs font-medium transition-all",
-                  selectedDay === day
-                    ? "bg-pure-white text-deep-black"
-                    : "text-gray-500 hover:text-pure-white"
-                )}
-              >
-                {day}
+                {cat.name}
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Classes Grid */}
-      <section className="py-16 bg-deep-black">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Results Count */}
-          <div className="mb-6 flex items-center justify-between">
-            <p className="text-gray-400 text-sm">
-              Showing{" "}
-              <span className="text-pure-white font-medium">
-                {filteredClasses.length}
-              </span>{" "}
-              classes
-            </p>
-            <div className="flex items-center space-x-4 text-xs text-gray-500">
-              <div className="flex items-center space-x-1">
-                <Clock className="w-4 h-4" />
-                <span>Duration</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Flame className="w-4 h-4" />
-                <span>Intensity</span>
-              </div>
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {filteredClasses.length > 0 ? (
-              <motion.div
-                key="results"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              >
-                {filteredClasses.map((classItem, index) => (
-                  <ClassCard
-                    key={classItem.id}
-                    classData={classItem}
-                    index={index}
-                  />
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="no-results"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-16"
-              >
-                <Filter className="w-14 h-14 mx-auto mb-4 text-gray-600" />
-                <h3 className="text-lg font-semibold text-pure-white mb-2">
-                  No classes found
-                </h3>
-                <p className="text-gray-400 text-sm">
-                  Try adjusting your filters or search terms
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* Schedule Overview */}
-      <section className="py-16 bg-card border-t border-border">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading
-            title="WEEKLY SCHEDULE"
-            subtitle="Plan your week with our comprehensive class schedule"
-          />
-
-          <div className="mt-10 overflow-x-auto">
-            <div className="min-w-[700px]">
-              <div className="grid grid-cols-8 gap-2">
-                {/* Header */}
-                <div className="p-3 font-medium text-gray-500 text-sm">Time</div>
-                {days.slice(1).map((day) => (
-                  <div
-                    key={day}
-                    className="p-3 font-medium text-pure-white text-center text-sm"
-                  >
-                    {day.slice(0, 3)}
-                  </div>
-                ))}
-
-                {/* Time Slots */}
-                {["06:00", "08:00", "10:00", "17:30", "18:00"].map((time) => (
-                  <>
-                    <div key={`${time}-label`} className="p-3 text-gray-400 text-sm">
-                      {time}
+      {/* Masonry Grid */}
+      <section className="px-8 lg:px-16 pb-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((cls, i) => (
+                <motion.div
+                  key={cls.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ delay: i * 0.05 }}
+                  onClick={() => setSelected(cls.id)}
+                  className="break-inside-avoid group cursor-pointer"
+                >
+                  <div className="relative rounded-2xl overflow-hidden bg-card border border-border hover:border-power-red/50 transition-all">
+                    <div className="relative h-48">
+                      <Image
+                        src={cls.image}
+                        alt={cls.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/90 via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-power-red/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase">
+                          {cls.category}
+                        </span>
+                      </div>
                     </div>
-                    {days.slice(1).map((day) => {
-                      const classForSlot = classes.find((c) =>
-                        c.schedule.some(
-                          (s) => s.day === day && s.time === time
-                        )
-                      );
-                      return (
-                        <div
-                          key={`${day}-${time}`}
-                          className={cn(
-                            "p-2 rounded-lg text-xs text-center",
-                            classForSlot
-                              ? "bg-gradient-to-r from-power-red/20 to-electric-orange/20 border border-power-red/30"
-                              : "bg-deep-black/50"
-                          )}
-                        >
-                          {classForSlot && (
-                            <div className="text-pure-white font-medium text-xs">
-                              {classForSlot.name}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </>
-                ))}
-              </div>
-            </div>
+                    <div className="p-5">
+                      <h3 className="heading-font text-xl font-bold text-pure-white mb-2 group-hover:text-power-red transition-colors">
+                        {cls.name}
+                      </h3>
+                      <p className="text-gray-500 text-sm mb-4 line-clamp-2">{cls.description}</p>
+                      <div className="flex items-center gap-4 text-xs text-gray-400">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" /> {cls.duration} min
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Flame className="w-3 h-3" /> {cls.intensity}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Users className="w-3 h-3" /> {cls.trainer}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </section>
-    </>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedClass && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setSelected(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-card border border-border rounded-3xl max-w-2xl w-full overflow-hidden"
+            >
+              <div className="relative h-64">
+                <Image
+                  src={selectedClass.image}
+                  alt={selectedClass.name}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                <button
+                  onClick={() => setSelected(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-deep-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-power-red transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="p-8">
+                <span className="text-power-red text-sm font-bold uppercase">{selectedClass.category}</span>
+                <h2 className="heading-font text-3xl font-bold text-pure-white mt-2 mb-4">{selectedClass.name}</h2>
+                <p className="text-gray-400 mb-6">{selectedClass.description}</p>
+
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="bg-deep-black rounded-xl p-4 text-center">
+                    <Clock className="w-5 h-5 text-power-red mx-auto mb-2" />
+                    <div className="text-pure-white font-bold">{selectedClass.duration} min</div>
+                    <div className="text-gray-500 text-xs">Duration</div>
+                  </div>
+                  <div className="bg-deep-black rounded-xl p-4 text-center">
+                    <Flame className="w-5 h-5 text-electric-orange mx-auto mb-2" />
+                    <div className="text-pure-white font-bold capitalize">{selectedClass.intensity}</div>
+                    <div className="text-gray-500 text-xs">Intensity</div>
+                  </div>
+                  <div className="bg-deep-black rounded-xl p-4 text-center">
+                    <Users className="w-5 h-5 text-success-green mx-auto mb-2" />
+                    <div className="text-pure-white font-bold">{selectedClass.calories}</div>
+                    <div className="text-gray-500 text-xs">Calories</div>
+                  </div>
+                </div>
+
+                <div className="border-t border-border pt-6">
+                  <h4 className="text-pure-white font-semibold mb-3">Schedule</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedClass.schedule.map((s, i) => (
+                      <span key={i} className="px-3 py-1 bg-power-red/10 text-power-red text-sm rounded-full">
+                        {s.day} {s.time}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
   );
 }
